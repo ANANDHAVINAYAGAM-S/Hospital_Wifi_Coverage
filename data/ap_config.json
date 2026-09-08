@@ -1,0 +1,82 @@
+[
+  {
+    "id": "AP-1",
+    "x": 10.0,
+    "y": 45.0,
+    "channel": 36,
+    "tx_power_dbm": 20.0,
+    "band": "5GHz",
+    "bssid": "AA:BB:CC:DD:EE:01",
+    "zone": "ward_A"
+  },
+  {
+    "id": "AP-2",
+    "x": 30.0,
+    "y": 45.0,
+    "channel": 40,
+    "tx_power_dbm": 20.0,
+    "band": "5GHz",
+    "bssid": "AA:BB:CC:DD:EE:02",
+    "zone": "ward_B"
+  },
+  {
+    "id": "AP-3",
+    "x": 50.0,
+    "y": 45.0,
+    "channel": 36,
+    "tx_power_dbm": 20.0,
+    "band": "5GHz",
+    "bssid": "AA:BB:CC:DD:EE:03",
+    "zone": "ward_C"
+  },
+  {
+    "id": "AP-4",
+    "x": 10.0,
+    "y": 12.0,
+    "channel": 44,
+    "tx_power_dbm": 20.0,
+    "band": "5GHz",
+    "bssid": "AA:BB:CC:DD:EE:04",
+    "zone": "ward_D"
+  },
+  {
+    "id": "AP-5",
+    "x": 30.0,
+    "y": 12.0,
+    "channel": 48,
+    "tx_power_dbm": 20.0,
+    "band": "5GHz",
+    "bssid": "AA:BB:CC:DD:EE:05",
+    "zone": "ward_E"
+  },
+  {
+    "id": "AP-6",
+    "x": 50.0,
+    "y": 12.0,
+    "channel": 149,
+    "tx_power_dbm": 20.0,
+    "band": "5GHz",
+    "bssid": "AA:BB:CC:DD:EE:06",
+    "zone": "ward_F"
+  },
+  {
+    "id": "AP-7",
+    "x": 66.0,
+    "y": 50.0,
+    "channel": 153,
+    "tx_power_dbm": 20.0,
+    "band": "5GHz",
+    "bssid": "AA:BB:CC:DD:EE:07",
+    "zone": "theatre_1"
+  },
+  {
+    "id": "AP-8",
+    "x": 66.0,
+    "y": 30.0,
+    "channel": 153,
+    "tx_power_dbm": 20.0,
+    "band": "5GHz",
+    "bssid": "AA:BB:CC:DD:EE:08",
+    "zone": "theatre_2"
+  }
+]

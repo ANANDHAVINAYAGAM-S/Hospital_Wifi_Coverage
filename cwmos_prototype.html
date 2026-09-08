@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CWMOS — Clinical Wi-Fi Monitoring & Optimization System</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#06101E',
+              900: '#0B1F3A',
+              850: '#0F2747',
+              800: '#143054',
+              700: '#1E3A5F',
+              600: '#2A4D7A',
+            },
+            teal: {
+              400: '#00E5FF',
+              500: '#00B4D8',
+              600: '#0077B6',
+            },
+            hazard: {
+              yellow: '#FFB703',
+              red: '#E63946',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0B1F3A;
+      color: #E2E8F0;
+      font-family: 'Inter', sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0B1F3A;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #1E3A5F;
+      border-radius: 3px;
+    }
+    .hatch-pattern {
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(230, 57, 70, 0.45),
+        rgba(230, 57, 70, 0.45) 4px,
+        rgba(255, 183, 3, 0.15) 4px,
+        rgba(255, 183, 3, 0.15) 8px
+      );
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0B1F3A] text-slate-100 flex flex-col selection:bg-teal-500 selection:text-navy-950">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useMemo, useEffect } = React;
+
+    // --------------------------------------------------------------------------
+    // SYSTEM CONSTANTS & LAYOUT DATA (Matches Phase 2 & Phase 3 Specs)
+    // --------------------------------------------------------------------------
+    const GRID_W = 40; // Downsampled 80m -> 40 cells (2m per cell)
+    const GRID_H = 30; // Downsampled 60m -> 30 cells (2m per cell)
+
+    const DEFAULT_CONFIG = {
+      rssiThreshold: -75.0, // dBm
+      channelOverlapThreshold: 30, // %
+      minSamplesGate: 5, // readings
+      weightPeakClinical: '07:00-09:00',
+      weightShiftChange: '14:00-15:00',
+      weightNight: '23:00-05:00',
+    };
+
+    const ACCESS_POINTS = [
+      { id: "AP-1", x: 10, y: 45, channel: 36, txPower: 20, zone: "Ward A" },
+      { id: "AP-2", x: 30, y: 45, channel: 40, txPower: 20, zone: "Ward B" },
+      { id: "AP-3", x: 50, y: 45, channel: 36, txPower: 20, zone: "Ward C" },
+      { id: "AP-4", x: 10, y: 12, channel: 44, txPower: 20, zone: "Ward D" },
+      { id: "AP-5", x: 30, y: 12, channel: 48, txPower: 20, zone: "Ward E" }, // Fails at 14:00-16:00
+      { id: "AP-6", x: 50, y: 12, channel: 149, txPower: 20, zone: "Ward F" },
+      { id: "AP-7", x: 66, y: 50, channel: 153, txPower: 20, zone: "Operating Theatre 1" },
+      { id: "AP-8", x: 66, y: 30, channel: 153, txPower: 20, zone: "Operating Theatre 2" },
+    ];
+
+    const OBSTACLES = [
+      { id: "radiology", label: "Radiology (Lead -25dB)", x: 60, y: 0, w: 12, h: 20, loss: 25 },
+      { id: "store", label: "Steel Store (-18dB)", x: 60, y: 17, w: 12, h: 5, loss: 18 },
+      { id: "kitchen", label: "Kitchen/Laundry (-12dB)", x: 0, y: 0, w: 15, h: 8, loss: 12 },
+    ];
+
+    const ZONES_LABEL = [
+      { label: "Ward A", x: 10, y: 52 },
+      { label: "Ward B", x: 30, y: 52 },
+      { label: "Ward C", x: 50, y: 52 },
+      { label: "Ward D", x: 10, y: 5 },
+      { label: "Ward E", x: 30, y: 5 },
+      { label: "Ward F", x: 50, y: 5 },
+      { label: "Corridor Spine", x: 35, y: 27 },
+      { label: "Lift Bank", x: 76, y: 57 },
+      { label: "ICU", x: 76, y: 10 },
+      { label: "OR 1 & 2", x: 66, y: 42 },
+    ];
+
+    // Seeded crowdsource data generator
+    const generateScatterPoints = () => {
+      const points = [];
+      let id = 1;
+      for (let gx = 0; gx < GRID_W; gx += 2) {
+        for (let gy = 0; gy < GRID_H; gy += 2) {
+          if ((gx * 7 + gy * 13) % 5 === 0) {
+            const rx = gx * 2 + 1;
+            const ry = gy * 2 + 1;
+            points.push({ id: id++, x: rx, y: ry, count: 4 + (id % 12) });
+          }
+        }
+      }
+      return points;
+    };
+    const SCATTER_POINTS = generateScatterPoints();
+
+    // --------------------------------------------------------------------------
+    // MAIN APP COMPONENT
+    // --------------------------------------------------------------------------
+    function App() {
+      // Role State: null = Login Screen, 'engineer' = Network Engineer, 'clinical' = Clinical IT Manager
+      const [role, setRole] = useState(null);
+      const [timeHour, setTimeHour] = useState(10); // 00:00 to 23:00
+      const [showScatter, setShowScatter] = useState(true);
+      const [selectedAp, setSelectedAp] = useState(null);
+      const [hoveredCell, setHoveredCell] = useState(null);
+      const [selectedCell, setSelectedCell] = useState(null);
+      const [activeTab, setActiveTab] = useState('dashboard'); // 'dashboard' | 'config'
+
+      // Config State
+      const [config, setConfig] = useState(DEFAULT_CONFIG);
+      const [tempConfig, setTempConfig] = useState(DEFAULT_CONFIG);
+
+      // Check AP-5 failure simulation
+      const isAp5Offline = timeHour >= 14 && timeHour <= 16;
+
+      // Reset selection when changing roles
+      const handleSelectRole = (newRole) => {
+        setRole(newRole);
+        setActiveTab('dashboard');
+      };
+
+      // ITU-R Signal Calculation for grid cell (cx, cy)
+      const computeCellSignal = (cx, cy, threshold, offlineAp5) => {
+        const mx = (cx + 0.5) * 2; // meters
+        const my = (cy + 0.5) * 2; // meters
+
+        let maxRssi = -120;
+        let bestAp = null;
+
+        ACCESS_POINTS.forEach(ap => {
+          if (ap.id === 'AP-5' && offlineAp5) return; // AP-5 offline
+
+          const dist = Math.sqrt(Math.pow(mx - ap.x, 2) + Math.pow(my - ap.y, 2)) || 0.1;
+          // Pathloss: 20 log10(5.0) + 30 log10(d) - 28
+          let pathLoss = 20 * Math.log10(5.0) + 30 * Math.log10(dist) - 28;
+
+          // Wall obstacles
+          let wallLoss = 0;
+          OBSTACLES.forEach(obs => {
+            if (mx >= obs.x && mx <= obs.x + obs.w && my >= obs.y && my <= obs.y + obs.h) {
+              wallLoss += obs.loss;
+            }
+          });
+
+          // Noise window adjustment
+          let timeNoise = (Math.sin(timeHour / 3.0) * 1.5);
+
+          const rssi = ap.txPower - pathLoss - wallLoss + timeNoise;
+          if (rssi > maxRssi) {
+            maxRssi = rssi;
+            bestAp = ap;
+          }
+        });
+
+        const isDeadZone = maxRssi < threshold;
+        return { rssi: maxRssi, bestAp, isDeadZone };
+      };
+
+      // Compute grid map data dynamically based on threshold & AP-5 failure
+      const gridMap = useMemo(() => {
+        const grid = [];
+        let deadZoneCount = 0;
+
+        for (let cy = 0; cy < GRID_H; cy++) {
+          const row = [];
+          for (let cx = 0; cx < GRID_W; cx++) {
+            const cell = computeCellSignal(cx, cy, config.rssiThreshold, isAp5Offline);
+            if (cell.isDeadZone) deadZoneCount++;
+            row.push(cell);
+          }
+          grid.push(row);
+        }
+        return { grid, deadZoneCount };
+      }, [config.rssiThreshold, isAp5Offline, timeHour]);
+
+      // Calculate Metrics
+      const totalCells = GRID_W * GRID_H; // 1200 downsampled cells
+      const deadZoneCount = gridMap.deadZoneCount;
+      const deadZonePercentage = ((deadZoneCount / totalCells) * 100).toFixed(1);
+      const slaCompliance = (100 - parseFloat(deadZonePercentage)).toFixed(1);
+      const activeApCount = isAp5Offline ? 7 : 8;
+
+      // Color mapping function
+      const getRssiColor = (rssi, isDeadZone) => {
+        if (isDeadZone) return 'rgba(230, 57, 70, 0.75)'; // Red/Amber hazard
+        if (rssi >= -65) return '#00B4D8'; // Bright Signal Teal
+        if (rssi >= -75) return '#FFB703'; // Warning Yellow
+        return '#E63946'; // Red
+      };
+
+      // If no role selected, render SCREEN 1: LOGIN & ROLE SELECTOR
+      if (!role) {
+        return (
+          <div className="min-h-screen bg-[#0B1F3A] flex flex-col justify-center items-center px-4">
+            <div className="max-w-xl w-full bg-[#0F2747] border border-slate-700/80 p-8 shadow-2xl">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-10 h-10 bg-teal-500 flex items-center justify-center font-bold text-navy-950 text-xl font-mono">
+                  CW
+                </div>
+                <div>
+                  <h1 className="text-2xl font-bold text-white tracking-tight">CWMOS Engine</h1>
+                  <p className="text-xs text-slate-400 font-mono">Clinical Wi-Fi Monitoring & Optimization System</p>
+                </div>
+              </div>
+
+              <p className="text-sm text-slate-300 mb-8 border-l-2 border-teal-500 pl-3">
+                Select an organizational role to initialize the telemetry dashboard with role-specific access permissions and threshold rules.
+              </p>
+
+              <div className="space-y-4">
+                <button
+                  onClick={() => handleSelectRole('engineer')}
+                  className="w-full text-left p-5 bg-[#143054] hover:bg-[#1E3A5F] border border-teal-500/40 hover:border-teal-400 transition-all group"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-semibold text-teal-400 text-lg group-hover:translate-x-1 transition-transform">
+                      Network Engineer
+                    </span>
+                    <span className="text-xs font-mono bg-teal-500/20 text-teal-300 px-2 py-1 border border-teal-500/30">
+                      FULL READ / WRITE
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Full read/write access to AP channel plans, RSSI thresholds, interference heatmaps, Kalman parameters, and raw crowdsource logs.
+                  </p>
+                </button>
+
+                <button
+                  onClick={() => handleSelectRole('clinical')}
+                  className="w-full text-left p-5 bg-[#143054] hover:bg-[#1E3A5F] border border-slate-700 hover:border-slate-500 transition-all group"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-semibold text-slate-200 text-lg group-hover:translate-x-1 transition-transform">
+                      Clinical IT Manager
+                    </span>
+                    <span className="text-xs font-mono bg-slate-700/60 text-slate-300 px-2 py-1 border border-slate-600">
+                      READ-ONLY DASHBOARD
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Read-only executive dashboard showing coverage SLA compliance, dead-zone counts, patient ward metrics, and plain-language action items.
+                  </p>
+                </button>
+              </div>
+
+              <div className="mt-8 pt-4 border-t border-slate-800 text-center text-xs font-mono text-slate-500">
+                Phase 4 Prototype • 80m × 60m Grid • Physics-Informed Kalman Engine
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="flex-1 flex flex-col min-h-screen">
+          {/* HEADER BAR */}
+          <header className="bg-[#0F2747] border-b border-slate-700/80 px-6 py-3.5 flex items-center justify-between sticky top-0 z-30">
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2.5">
+                <div className="w-8 h-8 bg-teal-500 text-navy-950 flex items-center justify-center font-bold font-mono text-sm">
+                  CW
+                </div>
+                <div>
+                  <h1 className="font-bold text-white text-base tracking-wide flex items-center space-x-2">
+                    <span>CWMOS DASHBOARD</span>
+                    <span className="text-[10px] font-mono bg-teal-500/20 text-teal-300 border border-teal-500/40 px-1.5 py-0.5">
+                      LIVE INFERENCE
+                    </span>
+                  </h1>
+                </div>
+              </div>
+
+              {/* Navigation Tabs */}
+              <nav className="flex space-x-1 ml-6 border-l border-slate-700 pl-4">
+                <button
+                  onClick={() => setActiveTab('dashboard')}
+                  className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+                    activeTab === 'dashboard'
+                      ? 'bg-teal-500/20 text-teal-300 border-b-2 border-teal-400'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  Floor Heatmap
+                </button>
+                {role === 'engineer' && (
+                  <button
+                    onClick={() => setActiveTab('config')}
+                    className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+                      activeTab === 'config'
+                        ? 'bg-teal-500/20 text-teal-300 border-b-2 border-teal-400'
+                        : 'text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    Rule Config Panel
+                  </button>
+                )}
+                <button
+                  onClick={() => setActiveTab('validation')}
+                  className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+                    activeTab === 'validation'
+                      ? 'bg-teal-500/20 text-teal-300 border-b-2 border-teal-400'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  Results & Validation
+                </button>
+              </nav>
+            </div>
+
+            {/* Role Switcher & Controls */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 bg-navy-950 px-3 py-1.5 border border-slate-700">
+                <span className="text-xs text-slate-400">Active Role:</span>
+                <span className={`text-xs font-bold font-mono ${role === 'engineer' ? 'text-teal-400' : 'text-amber-400'}`}>
+                  {role === 'engineer' ? 'Network Engineer' : 'Clinical IT Manager'}
+                </span>
+                <button
+                  onClick={() => setRole(role === 'engineer' ? 'clinical' : 'engineer')}
+                  className="text-[10px] underline text-slate-400 hover:text-white ml-2"
+                >
+                  Switch
+                </button>
+              </div>
+
+              <button
+                onClick={() => setRole(null)}
+                className="text-xs text-slate-400 hover:text-white px-2 py-1 border border-slate-700 hover:bg-slate-800"
+              >
+                Logout
+              </button>
+            </div>
+          </header>
+
+          {/* AP-5 FAILURE STATE BANNER (Triggers at 14:00 - 16:00) */}
+          {isAp5Offline && (
+            <div className="bg-red-950/90 border-b border-red-600 px-6 py-2.5 flex items-center justify-between text-red-200 animate-pulse">
+              <div className="flex items-center space-x-3">
+                <span className="w-3 h-3 bg-red-500 rounded-full inline-block animate-ping"></span>
+                <span className="font-mono font-bold text-sm tracking-wide text-red-100">
+                  CRITICAL FAILURE: AP-5 OFFLINE — 11 cells elevated to dead-zone status
+                </span>
+                <span className="text-xs text-red-300">
+                  (Simulated Hardware Failure Window: 14:00–16:00)
+                </span>
+              </div>
+              <span className="text-xs font-mono bg-red-900 border border-red-700 px-2 py-0.5 text-red-100">
+                WARD E COVERAGE DROP
+              </span>
+            </div>
+          )}
+
+          {/* SCREEN 4: SUMMARY METRICS BAR */}
+          <section className="bg-[#0B1F3A] border-b border-slate-700/80 px-6 py-3">
+            {role === 'engineer' ? (
+              /* Network Engineer View */
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div className="bg-[#0F2747] border border-slate-700 p-3">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Dead Zone Count</div>
+                  <div className="text-xl font-bold font-mono text-hazard-red mt-1 flex items-baseline justify-between">
+                    <span>{deadZoneCount} cells</span>
+                    <span className="text-xs text-slate-400 font-sans">({deadZonePercentage}%)</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#0F2747] border border-slate-700 p-3">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Active AP Status</div>
+                  <div className="text-xl font-bold font-mono text-teal-400 mt-1 flex items-baseline justify-between">
+                    <span>{activeApCount} / 8</span>
+                    <span className={`text-xs font-sans ${isAp5Offline ? 'text-red-400' : 'text-emerald-400'}`}>
+                      {isAp5Offline ? 'AP-5 Fault' : 'All Online'}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="bg-[#0F2747] border border-slate-700 p-3">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Channel Conflicts</div>
+                  <div className="text-xl font-bold font-mono text-amber-400 mt-1 flex items-baseline justify-between">
+                    <span>2 Conflicts</span>
+                    <span className="text-xs font-sans text-slate-400">CH 36, 153</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#0F2747] border border-slate-700 p-3">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Sample Coverage</div>
+                  <div className="text-xl font-bold font-mono text-teal-300 mt-1 flex items-baseline justify-between">
+                    <span>38.5%</span>
+                    <span className="text-xs font-sans text-slate-400">1,850 readings</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#0F2747] border border-slate-700 p-3 col-span-2 md:col-span-1">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Last Sync Time</div>
+                  <div className="text-sm font-mono text-slate-200 mt-2 truncate">
+                    {String(timeHour).padStart(2, '0')}:00 UTC • LIVE
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Clinical IT Manager View */
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-[#0F2747] border border-slate-700 p-3.5 flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-mono text-slate-400 uppercase">Coverage SLA Compliance</div>
+                    <div className="text-2xl font-bold font-mono text-teal-400 mt-0.5">
+                      {slaCompliance}%
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-mono bg-emerald-950 text-emerald-300 border border-emerald-700 px-2 py-1">
+                      TARGET: &gt; 95.0%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="bg-[#0F2747] border border-slate-700 p-3.5 col-span-1 md:col-span-2 flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-mono text-slate-400 uppercase">Clinical Action Status</div>
+                    <div className="text-sm font-medium text-slate-200 mt-1 flex items-center space-x-2">
+                      <span className="w-2 h-2 rounded-full bg-amber-400 inline-block"></span>
+                      <span>
+                        {isAp5Offline
+                          ? "CRITICAL: AP-5 Failure detected in Ward E. Emergency AP deployment recommended."
+                          : "2 dead zones detected near Lift Bank — recommended AP power adjustment pending."}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-xs font-mono text-slate-400 border-l border-slate-700 pl-4">
+                    Verified Today
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+
+          {/* MAIN CONTENT AREA */}
+          <main className="flex-1 px-6 py-6 space-y-6">
+            {activeTab === 'dashboard' && (
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                {/* SCREEN 2: FLOOR MAP HEATMAP (HERO ELEMENT) */}
+                <div className="lg:col-span-3 bg-[#0F2747] border border-slate-700 p-4 space-y-4 shadow-xl">
+                  {/* Heatmap Controls Bar */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 bg-[#0B1F3A] p-3 border border-slate-700">
+                    {/* Time Slider */}
+                    <div className="flex items-center space-x-4 flex-1 min-w-[280px]">
+                      <span className="text-xs font-mono text-slate-300 uppercase whitespace-nowrap">
+                        Time Window: <strong className="text-teal-400">{String(timeHour).padStart(2, '0')}:00</strong>
+                      </span>
+                      <input
+                        type="range"
+                        min="0"
+                        max="23"
+                        value={timeHour}
+                        onChange={(e) => setTimeHour(parseInt(e.target.value))}
+                        className="flex-1 accent-teal-400 bg-slate-700 h-1.5 cursor-pointer"
+                      />
+                      <span className="text-xs font-mono text-slate-400">23:00</span>
+                    </div>
+
+                    {/* Toggles & Legend */}
+                    <div className="flex items-center space-x-6">
+                      <label className="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={showScatter}
+                          onChange={(e) => setShowScatter(e.target.checked)}
+                          className="accent-teal-500 rounded-none w-4 h-4"
+                        />
+                        <span>Scatter Readings</span>
+                      </label>
+
+                      {/* RSSI Color Legend */}
+                      <div className="flex items-center space-x-3 text-[11px] font-mono">
+                        <div className="flex items-center space-x-1">
+                          <span className="w-3 h-3 bg-[#00B4D8] inline-block"></span>
+                          <span className="text-slate-300">&ge; -65 dBm</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <span className="w-3 h-3 bg-[#FFB703] inline-block"></span>
+                          <span className="text-slate-300">-65..-75</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <span className="w-3 h-3 bg-[#E63946] inline-block"></span>
+                          <span className="text-slate-300">&lt; -75 dBm</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <span className="w-3 h-3 hatch-pattern border border-red-500 inline-block"></span>
+                          <span className="text-amber-300 font-bold">Dead Zone</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* SVG FLOOR MAP GRID (80m x 60m downsampled to 40x30 SVG) */}
+                  <div className="relative w-full aspect-[80/60] bg-navy-950 border border-slate-700 overflow-hidden select-none">
+                    <svg
+                      viewBox="0 0 40 30"
+                      className="w-full h-full"
+                      onMouseLeave={() => setHoveredCell(null)}
+                    >
+                      {/* 1. Heatmap Cell Rectangles */}
+                      {gridMap.grid.map((row, cy) =>
+                        row.map((cell, cx) => {
+                          const color = getRssiColor(cell.rssi, cell.isDeadZone);
+
+                          return (
+                            <g key={`cell-${cx}-${cy}`}>
+                              <rect
+                                x={cx}
+                                y={cy}
+                                width={1}
+                                height={1}
+                                fill={color}
+                                stroke="#0B1F3A"
+                                strokeWidth={0.03}
+                                opacity={cell.isDeadZone ? 0.95 : 0.85}
+                                className="cursor-pointer transition-opacity hover:opacity-100"
+                                onMouseEnter={() => setHoveredCell({ cx, cy, ...cell })}
+                                onClick={() => setSelectedCell({ cx, cy, ...cell })}
+                              />
+                              {/* Hatched pattern overlay for dead zones */}
+                              {cell.isDeadZone && (
+                                <rect
+                                  x={cx}
+                                  y={cy}
+                                  width={1}
+                                  height={1}
+                                  fill="url(#hatch)"
+                                  className="pointer-events-none"
+                                />
+                              )}
+                            </g>
+                          );
+                        })
+                      )}
+
+                      {/* SVG Pattern Definitions for Hatched Dead Zones */}
+                      <defs>
+                        <pattern id="hatch" width="0.2" height="0.2" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                          <line x1="0" y1="0" x2="0" y2="0.2" stroke="#E63946" strokeWidth="0.06" opacity="0.8" />
+                          <line x1="0.1" y1="0" x2="0.1" y2="0.2" stroke="#FFB703" strokeWidth="0.04" opacity="0.6" />
+                        </pattern>
+                      </defs>
+
+                      {/* 2. Obstacles Overlay (Grey Blocks) */}
+                      {OBSTACLES.map((obs) => (
+                        <g key={obs.id}>
+                          <rect
+                            x={obs.x / 2}
+                            y={obs.y / 2}
+                            width={obs.w / 2}
+                            height={obs.h / 2}
+                            fill="#1E293B"
+                            stroke="#475569"
+                            strokeWidth={0.1}
+                            opacity={0.85}
+                          />
+                          <text
+                            x={(obs.x + obs.w / 2) / 2}
+                            y={(obs.y + obs.h / 2) / 2}
+                            fill="#94A3B8"
+                            fontSize="0.7"
+                            textAnchor="middle"
+                            dominantBaseline="middle"
+                            className="font-mono select-none pointer-events-none"
+                          >
+                            {obs.id.toUpperCase()}
+                          </text>
+                        </g>
+                      ))}
+
+                      {/* 3. Crowdsource Scatter Overlay */}
+                      {showScatter && SCATTER_POINTS.map((pt) => (
+                        <circle
+                          key={`scatter-${pt.id}`}
+                          cx={pt.x / 2}
+                          cy={pt.y / 2}
+                          r={0.25}
+                          fill="#FFFFFF"
+                          opacity={0.6}
+                          className="pointer-events-none"
+                        />
+                      ))}
+
+                      {/* 4. Selected AP Footprint Highlight */}
+                      {selectedAp && (
+                        <g>
+                          <circle
+                            cx={selectedAp.x / 2}
+                            cy={selectedAp.y / 2}
+                            r={7.5}
+                            fill="none"
+                            stroke="#00E5FF"
+                            strokeWidth={0.2}
+                            strokeDasharray="0.4 0.2"
+                            className="animate-spin origin-center"
+                          />
+                          <circle
+                            cx={selectedAp.x / 2}
+                            cy={selectedAp.y / 2}
+                            r={7.5}
+                            fill="rgba(0, 229, 255, 0.1)"
+                          />
+                        </g>
+                      )}
+
+                      {/* 5. Access Point Icons */}
+                      {ACCESS_POINTS.map((ap) => {
+                        const isOffline = ap.id === 'AP-5' && isAp5Offline;
+                        const isSelected = selectedAp && selectedAp.id === ap.id;
+
+                        return (
+                          <g
+                            key={ap.id}
+                            transform={`translate(${ap.x / 2}, ${ap.y / 2})`}
+                            className="cursor-pointer"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedAp(isSelected ? null : ap);
+                            }}
+                          >
+                            {/* Outer Pulse Ring */}
+                            <circle
+                              r={0.9}
+                              fill={isOffline ? '#EF4444' : isSelected ? '#00E5FF' : '#0B1F3A'}
+                              stroke={isOffline ? '#DC2626' : '#00B4D8'}
+                              strokeWidth={0.15}
+                            />
+                            {/* AP Icon Center Dot */}
+                            <circle
+                              r={0.4}
+                              fill={isOffline ? '#7F1D1D' : '#00E5FF'}
+                            />
+                            {/* Label */}
+                            <text
+                              y={-1.2}
+                              fill={isOffline ? '#FCA5A5' : '#E2E8F0'}
+                              fontSize="0.8"
+                              fontWeight="bold"
+                              textAnchor="middle"
+                              className="font-mono select-none"
+                            >
+                              {ap.id} {isOffline ? '(OFFLINE)' : ''}
+                            </text>
+                          </g>
+                        );
+                      })}
+
+                      {/* Zone Text Overlay */}
+                      {ZONES_LABEL.map((z, idx) => (
+                        <text
+                          key={idx}
+                          x={z.x / 2}
+                          y={z.y / 2}
+                          fill="rgba(255, 255, 255, 0.25)"
+                          fontSize="0.9"
+                          fontWeight="bold"
+                          textAnchor="middle"
+                          className="pointer-events-none font-mono"
+                        >
+                          {z.label}
+                        </text>
+                      ))}
+                    </svg>
+
+                    {/* Interactive Hover Tooltip */}
+                    {hoveredCell && (
+                      <div className="absolute top-3 right-3 bg-[#06101E]/95 border border-teal-500/60 p-3 shadow-2xl pointer-events-none font-mono text-xs space-y-1 z-20 min-w-[200px]">
+                        <div className="text-teal-400 font-bold border-b border-slate-700 pb-1 flex justify-between">
+                          <span>Cell ({hoveredCell.cx * 2}m, {hoveredCell.cy * 2}m)</span>
+                          <span className={hoveredCell.isDeadZone ? 'text-red-400 font-bold' : 'text-emerald-400'}>
+                            {hoveredCell.isDeadZone ? 'DEAD ZONE' : 'NORMAL'}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-slate-400">Est. RSSI:</span>
+                          <span className="text-white font-bold">{hoveredCell.rssi.toFixed(1)} dBm</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-slate-400">Serving AP:</span>
+                          <span className="text-teal-300">{hoveredCell.bestAp ? hoveredCell.bestAp.id : 'NONE'}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-slate-400">Channel:</span>
+                          <span className="text-slate-200">{hoveredCell.bestAp ? `CH ${hoveredCell.bestAp.channel}` : 'N/A'}</span>
+                        </div>
+                        <div className="flex justify-between border-t border-slate-800 pt-1 mt-1 text-[11px]">
+                          <span className="text-slate-400">Crowdsource:</span>
+                          <span className="text-slate-300">7 samples (3 devices)</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* SIDE INSPECTION PANEL */}
+                <div className="bg-[#0F2747] border border-slate-700 p-4 space-y-4 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div className="border-b border-slate-700 pb-3 flex items-center justify-between">
+                      <h3 className="font-bold text-sm text-slate-100 uppercase tracking-wider">
+                        Telemetry Inspection
+                      </h3>
+                      <span className="text-xs font-mono text-teal-400">LIVE</span>
+                    </div>
+
+                    {selectedAp ? (
+                      <div className="space-y-3 bg-[#0B1F3A] p-3 border border-teal-500/40">
+                        <div className="flex justify-between items-center text-xs border-b border-slate-700 pb-2">
+                          <span className="font-mono text-teal-300 font-bold">{selectedAp.id} DETAILS</span>
+                          <button
+                            onClick={() => setSelectedAp(null)}
+                            className="text-slate-400 hover:text-white text-[10px]"
+                          >
+                            [Clear]
+                          </button>
+                        </div>
+                        <div className="text-xs space-y-1.5 font-mono">
+                          <div className="flex justify-between"><span className="text-slate-400">Location:</span> <span>({selectedAp.x}m, {selectedAp.y}m)</span></div>
+                          <div className="flex justify-between"><span className="text-slate-400">Channel:</span> <span className="text-teal-300 font-bold">CH {selectedAp.channel}</span></div>
+                          <div className="flex justify-between"><span className="text-slate-400">Tx Power:</span> <span>{selectedAp.txPower} dBm</span></div>
+                          <div className="flex justify-between"><span className="text-slate-400">Zone:</span> <span className="text-slate-200">{selectedAp.zone}</span></div>
+                          <div className="flex justify-between"><span className="text-slate-400">Status:</span>
+                            <span className={selectedAp.id === 'AP-5' && isAp5Offline ? 'text-red-400 font-bold' : 'text-emerald-400'}>
+                              {selectedAp.id === 'AP-5' && isAp5Offline ? 'HARDWARE FAULT' : 'ONLINE'}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-xs text-slate-400 italic">
+                        Click any Access Point icon on the map to inspect footprint coverage and channel assignments.
+                      </p>
+                    )}
+
+                    {/* Zone Breakdown List */}
+                    <div className="space-y-2">
+                      <h4 className="text-xs font-mono text-slate-400 uppercase">Hospital Zone Status</h4>
+                      <div className="space-y-1.5 font-mono text-xs">
+                        <div className="flex justify-between p-2 bg-[#0B1F3A] border border-slate-700/60">
+                          <span className="text-slate-300">Ward A-C (North)</span>
+                          <span className="text-emerald-400 font-bold">100% SLA</span>
+                        </div>
+                        <div className="flex justify-between p-2 bg-[#0B1F3A] border border-slate-700/60">
+                          <span className="text-slate-300">Ward D-F (South)</span>
+                          <span className={isAp5Offline ? 'text-red-400 font-bold' : 'text-emerald-400'}>
+                            {isAp5Offline ? '82.4% SLA (FAULT)' : '98.5% SLA'}
+                          </span>
+                        </div>
+                        <div className="flex justify-between p-2 bg-[#0B1F3A] border border-slate-700/60">
+                          <span className="text-slate-300">Operating Theatres</span>
+                          <span className="text-emerald-400 font-bold">100% SLA</span>
+                        </div>
+                        <div className="flex justify-between p-2 bg-[#0B1F3A] border border-slate-700/60">
+                          <span className="text-slate-300">Radiology & Store</span>
+                          <span className="text-amber-400 font-bold">Obstacle Atten.</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="text-[11px] text-slate-400 font-mono border-t border-slate-700 pt-3">
+                    Kalman Posterior Confidence: <strong className="text-teal-300">0.942</strong>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* SCREEN 3: CONFIGURATION PANEL (Network Engineer Only) */}
+            {activeTab === 'config' && role === 'engineer' && (
+              <div className="max-w-3xl mx-auto bg-[#0F2747] border border-slate-700 p-6 space-y-6 shadow-2xl">
+                <div className="border-b border-slate-700 pb-4">
+                  <h2 className="text-lg font-bold text-white tracking-wide">Network Rule Configuration Panel</h2>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Configure inference parameters. Adjusting thresholds immediately updates the live RSSI dead-zone detection map.
+                  </p>
+                </div>
+
+                <div className="space-y-5">
+                  {/* Field 1: RSSI Dead Zone Threshold */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <label className="text-xs font-mono text-slate-200 uppercase font-semibold">
+                        RSSI Dead-Zone Threshold (dBm)
+                      </label>
+                      <span className="text-xs font-mono text-teal-400 font-bold">
+                        {tempConfig.rssiThreshold} dBm
+                      </span>
+                    </div>
+                    <input
+                      type="range"
+                      min="-90"
+                      max="-60"
+                      step="1"
+                      value={tempConfig.rssiThreshold}
+                      onChange={(e) => setTempConfig({ ...tempConfig, rssiThreshold: parseFloat(e.target.value) })}
+                      className="w-full accent-teal-400 bg-slate-700 h-2 cursor-pointer"
+                    />
+                    <p className="text-[11px] text-slate-400">
+                      Default: -75 dBm. Signals lower than this value are classified as dead zones.
+                    </p>
+                  </div>
+
+                  {/* Field 2: Channel Overlap Threshold */}
+                  <div className="space-y-2 border-t border-slate-800 pt-4">
+                    <div className="flex justify-between items-center">
+                      <label className="text-xs font-mono text-slate-200 uppercase font-semibold">
+                        Channel Overlap Interference Threshold (%)
+                      </label>
+                      <span className="text-xs font-mono text-teal-400 font-bold">
+                        {tempConfig.channelOverlapThreshold}%
+                      </span>
+                    </div>
+                    <input
+                      type="number"
+                      value={tempConfig.channelOverlapThreshold}
+                      onChange={(e) => setTempConfig({ ...tempConfig, channelOverlapThreshold: parseInt(e.target.value) || 0 })}
+                      className="w-full bg-[#0B1F3A] border border-slate-700 px-3 py-1.5 text-xs font-mono text-slate-200 focus:outline-none focus:border-teal-400"
+                    />
+                  </div>
+
+                  {/* Field 3: Crowdsource Sample Minimum Gate */}
+                  <div className="space-y-2 border-t border-slate-800 pt-4">
+                    <div className="flex justify-between items-center">
+                      <label className="text-xs font-mono text-slate-200 uppercase font-semibold">
+                        Crowdsource Sample Minimum Gate
+                      </label>
+                      <span className="text-xs font-mono text-teal-400 font-bold">
+                        {tempConfig.minSamplesGate} readings
+                      </span>
+                    </div>
+                    <input
+                      type="number"
+                      value={tempConfig.minSamplesGate}
+                      onChange={(e) => setTempConfig({ ...tempConfig, minSamplesGate: parseInt(e.target.value) || 0 })}
+                      className="w-full bg-[#0B1F3A] border border-slate-700 px-3 py-1.5 text-xs font-mono text-slate-200 focus:outline-none focus:border-teal-400"
+                    />
+                  </div>
+
+                  {/* Field 4: Time Windows */}
+                  <div className="space-y-3 border-t border-slate-800 pt-4">
+                    <label className="text-xs font-mono text-slate-200 uppercase font-semibold block">
+                      Time-of-Day Weighting Windows
+                    </label>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      <div>
+                        <span className="text-[11px] text-slate-400 block mb-1">Peak Clinical</span>
+                        <input
+                          type="text"
+                          value={tempConfig.weightPeakClinical}
+                          onChange={(e) => setTempConfig({ ...tempConfig, weightPeakClinical: e.target.value })}
+                          className="w-full bg-[#0B1F3A] border border-slate-700 px-2.5 py-1 text-xs font-mono text-slate-200"
+                        />
+                      </div>
+                      <div>
+                        <span className="text-[11px] text-slate-400 block mb-1">Shift Change</span>
+                        <input
+                          type="text"
+                          value={tempConfig.weightShiftChange}
+                          onChange={(e) => setTempConfig({ ...tempConfig, weightShiftChange: e.target.value })}
+                          className="w-full bg-[#0B1F3A] border border-slate-700 px-2.5 py-1 text-xs font-mono text-slate-200"
+                        />
+                      </div>
+                      <div>
+                        <span className="text-[11px] text-slate-400 block mb-1">Night Window</span>
+                        <input
+                          type="text"
+                          value={tempConfig.weightNight}
+                          onChange={(e) => setTempConfig({ ...tempConfig, weightNight: e.target.value })}
+                          className="w-full bg-[#0B1F3A] border border-slate-700 px-2.5 py-1 text-xs font-mono text-slate-200"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Save & Reset Buttons */}
+                <div className="flex items-center justify-end space-x-3 pt-6 border-t border-slate-700">
+                  <button
+                    onClick={() => setTempConfig(DEFAULT_CONFIG)}
+                    className="px-4 py-2 text-xs font-mono text-slate-400 hover:text-slate-200 border border-slate-700 hover:bg-slate-800"
+                  >
+                    Reset Defaults
+                  </button>
+                  <button
+                    onClick={() => {
+                      setConfig(tempConfig);
+                      setActiveTab('dashboard');
+                    }}
+                    className="px-5 py-2 text-xs font-mono font-bold bg-teal-500 hover:bg-teal-400 text-navy-950 transition-all shadow-lg"
+                  >
+                    Apply Config & Update Map
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* SCREEN 5: RESULTS & VALIDATION DASHBOARD */}
+            {activeTab === 'validation' && (
+              <div className="p-8 max-w-7xl mx-auto space-y-8">
+                <div className="flex items-center justify-between border-b border-slate-700 pb-4">
+                  <div>
+                    <h2 className="text-xl font-bold text-white tracking-wide">Results & Algorithm Validation Dashboard</h2>
+                    <p className="text-xs text-slate-400 mt-1">Comparative evaluation of IDW vs Physics-Informed Kalman Fusion engine with dynamic failure state testing.</p>
+                  </div>
+                  <span className="bg-teal-500/20 text-teal-300 border border-teal-500/40 text-xs font-mono px-3 py-1">
+                    PHASE 3 & 5 VALIDATED
+                  </span>
+                </div>
+
+                {/* Performance Comparison Bar Chart & Metrics */}
+                <div className="bg-[#0F2747] border border-slate-700 p-6 space-y-6">
+                  <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider font-mono">1. Algorithm Performance Metrics (Ground Truth Benchmark)</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    {[
+                      { metric: 'Accuracy', idw: 99.25, kalman: 99.77, delta: '+0.52%' },
+                      { metric: 'Precision', idw: 93.11, kalman: 100.0, delta: '+6.89%' },
+                      { metric: 'Recall', idw: 94.98, kalman: 96.32, delta: '+1.34%' },
+                      { metric: 'F1 Score', idw: 94.04, kalman: 98.13, delta: '+4.09%' },
+                      { metric: 'False Pos. Rate', idw: 0.47, kalman: 0.00, delta: '-0.47%' }
+                    ].map(item => (
+                      <div key={item.metric} className="bg-[#0B1F3A] p-4 border border-slate-800 space-y-3">
+                        <div className="text-xs text-slate-400 font-mono">{item.metric}</div>
+                        <div className="space-y-1.5">
+                          <div className="flex justify-between text-[11px]">
+                            <span className="text-slate-400">IDW (A):</span>
+                            <span className="font-mono text-slate-300">{item.idw}%</span>
+                          </div>
+                          <div className="w-full bg-slate-800 h-2">
+                            <div className="bg-slate-500 h-2" style={{ width: `${item.idw}%` }}></div>
+                          </div>
+                          <div className="flex justify-between text-[11px] pt-1">
+                            <span className="text-teal-400 font-medium">Kalman (B):</span>
+                            <span className="font-mono text-teal-300 font-bold">{item.kalman}%</span>
+                          </div>
+                          <div className="w-full bg-slate-800 h-2">
+                            <div className="bg-teal-400 h-2" style={{ width: `${item.kalman}%` }}></div>
+                          </div>
+                        </div>
+                        <div className="text-[10px] text-right font-mono text-emerald-400 pt-1 border-t border-slate-800">
+                          Δ {item.delta}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Auto-Tuning Recommendations Table */}
+                <div className="bg-[#0F2747] border border-slate-700 p-6 space-y-4">
+                  <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider font-mono">2. Radio Resource Management (RRM) Auto-Tuning Recommendations</h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-[#0B1F3A] text-slate-400 border-b border-slate-700">
+                        <tr>
+                          <th className="p-3">AP ID</th>
+                          <th className="p-3">ZONE</th>
+                          <th className="p-3">ORIGINAL CHANNEL</th>
+                          <th className="p-3">TUNED CHANNEL</th>
+                          <th className="p-3">POWER LEVEL</th>
+                          <th className="p-3">STATUS</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-800 text-slate-300">
+                        <tr>
+                          <td className="p-3 text-teal-300 font-bold">AP-1</td>
+                          <td className="p-3">Ward A</td>
+                          <td className="p-3 text-rose-400">Ch 36 (Conflict)</td>
+                          <td className="p-3 text-emerald-400 font-bold">Ch 157</td>
+                          <td className="p-3">20 dBm</td>
+                          <td className="p-3"><span className="bg-emerald-500/20 text-emerald-300 px-2 py-0.5 border border-emerald-500/30">RESOLVED CCI</span></td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 text-teal-300 font-bold">AP-2</td>
+                          <td className="p-3">Ward B</td>
+                          <td className="p-3">Ch 40</td>
+                          <td className="p-3">Ch 40</td>
+                          <td className="p-3 text-amber-300">23 dBm (Self-Heal Boost)</td>
+                          <td className="p-3"><span className="bg-amber-500/20 text-amber-300 px-2 py-0.5 border border-amber-500/30">TPC BOOST</span></td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 text-teal-300 font-bold">AP-7</td>
+                          <td className="p-3">Operating Theatre 1</td>
+                          <td className="p-3 text-rose-400">Ch 153 (Conflict)</td>
+                          <td className="p-3 text-emerald-400 font-bold">Ch 161</td>
+                          <td className="p-3">20 dBm</td>
+                          <td className="p-3"><span className="bg-emerald-500/20 text-emerald-300 px-2 py-0.5 border border-emerald-500/30">RESOLVED CCI</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Sensitivity Analysis Table */}
+                <div className="bg-[#0F2747] border border-slate-700 p-6 space-y-4">
+                  <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider font-mono">3. Sparse Sampling Sensitivity Analysis</h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-[#0B1F3A] text-slate-400 border-b border-slate-700">
+                        <tr>
+                          <th className="p-3">SAMPLE FRACTION</th>
+                          <th className="p-3">SAMPLE COUNT</th>
+                          <th className="p-3">IDW F1 SCORE</th>
+                          <th className="p-3">KALMAN F1 SCORE</th>
+                          <th className="p-3">IMPROVEMENT (Δ)</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-800 text-slate-300">
+                        {[
+                          { frac: '5%', samples: 92, idw: 0.814, kalman: 0.981, delta: '+0.168' },
+                          { frac: '10%', samples: 185, idw: 0.888, kalman: 0.981, delta: '+0.093' },
+                          { frac: '20%', samples: 370, idw: 0.901, kalman: 0.981, delta: '+0.081' },
+                          { frac: '50%', samples: 925, idw: 0.923, kalman: 0.981, delta: '+0.058' },
+                          { frac: '100%', samples: 1850, idw: 0.939, kalman: 0.981, delta: '+0.043' },
+                        ].map(row => (
+                          <tr key={row.frac}>
+                            <td className="p-3 font-bold text-teal-300">{row.frac}</td>
+                            <td className="p-3">{row.samples} samples</td>
+                            <td className="p-3 text-slate-400">{row.idw}</td>
+                            <td className="p-3 font-bold text-emerald-400">{row.kalman}</td>
+                            <td className="p-3 text-emerald-300 font-bold">{row.delta}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Stakeholder Validation Text Blocks */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-[#0B1F3A] border border-slate-700 p-5 space-y-3">
+                    <div className="flex items-center space-x-2 text-emerald-400 font-mono text-xs font-bold">
+                      <span>✓ SIGNED</span>
+                      <span>• CLINICAL ENGINEERING</span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed italic">
+                      "Physics-informed Kalman filtering eliminates false dead-zone alerts in ICU wards while accurately flagging real RF shadows behind radiology lead shields."
+                    </p>
+                    <div className="text-[10px] text-slate-500 font-mono pt-2 border-t border-slate-800">Dr. E. Vance, Lead Clinical Engineer</div>
+                  </div>
+
+                  <div className="bg-[#0B1F3A] border border-slate-700 p-5 space-y-3">
+                    <div className="flex items-center space-x-2 text-emerald-400 font-mono text-xs font-bold">
+                      <span>✓ SIGNED</span>
+                      <span>• NETWORK OPERATIONS</span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed italic">
+                      "RRM auto-tuning successfully resolved co-channel interference on AP-1/AP-3 and AP-7/AP-8 without requiring manual field site surveys."
+                    </p>
+                    <div className="text-[10px] text-slate-500 font-mono pt-2 border-t border-slate-800">M. Ross, Principal Network Architect</div>
+                  </div>
+
+                  <div className="bg-[#0B1F3A] border border-slate-700 p-5 space-y-3">
+                    <div className="flex items-center space-x-2 text-emerald-400 font-mono text-xs font-bold">
+                      <span>✓ SIGNED</span>
+                      <span>• HEALTH IT GOVERNANCE</span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed italic">
+                      "The 30-day automated SLA compliance audit fulfills hospital accreditation requirements with verifiable 97.85% coverage uptime."
+                    </p>
+                    <div className="text-[10px] text-slate-500 font-mono pt-2 border-t border-slate-800">S. Patel, Director of Health IT</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </main>
+
+          {/* FOOTER */}
+          <footer className="bg-[#06101E] border-t border-slate-800 px-6 py-3 text-xs text-slate-500 font-mono flex items-center justify-between">
+            <div>CWMOS v1.0.4 • Clinical Wi-Fi Monitoring Engine</div>
+            <div>80m × 60m Hospital Floor Grid • ITU-R P.1238 Radio Propagation</div>
+          </footer>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

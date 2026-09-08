@@ -1,0 +1,50 @@
+{
+  "timestamp_utc": "2026-09-08T06:35:10.453730Z",
+  "initial": {
+    "sla_compliance_pct": 100.0,
+    "dead_zone_cells": 0,
+    "cci_conflict_pairs": 2,
+    "conflicts": [
+      [
+        "AP-1",
+        "AP-3",
+        36,
+        40.0
+      ],
+      [
+        "AP-7",
+        "AP-8",
+        153,
+        20.0
+      ]
+    ]
+  },
+  "post_dca": {
+    "sla_compliance_pct": 100.0,
+    "dead_zone_cells": 0,
+    "cci_conflict_pairs": 0,
+    "conflicts": []
+  },
+  "ap5_outage_unhealed": {
+    "sla_compliance_pct": 100.0,
+    "dead_zone_cells": 0
+  },
+  "ap5_outage_healed": {
+    "sla_compliance_pct": 100.0,
+    "dead_zone_cells": 0,
+    "tx_power_boosts": [
+      {
+        "ap_id": "AP-2",
+        "new_tx_power_dbm": 23.0
+      },
+      {
+        "ap_id": "AP-4",
+        "new_tx_power_dbm": 23.0
+      },
+      {
+        "ap_id": "AP-6",
+        "new_tx_power_dbm": 23.0
+      }
+    ]
+  }
+}

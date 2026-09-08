@@ -1,0 +1,438 @@
+{
+  "dataset_name": "CWMOS Phase 2 Synthetic Dataset",
+  "version": "1.0",
+  "generated_at": "2026-09-07T00:00:00Z",
+  "floor_dimensions_m": {
+    "width": 80,
+    "height": 60
+  },
+  "grid_resolution_m": 1,
+  "signal_model": "ITU-R P.1238: L = 20*log10(f_MHz) + N*log10(d_m) + Lf - 28",
+  "frequency_mhz": 5000.0,
+  "tx_power_dbm": 20.0,
+  "gaussian_noise_sigma_db": 2.0,
+  "rssi_dead_zone_threshold_dbm": -75.0,
+  "co_channel_conflicts": [
+    {
+      "ap_a": "AP-1",
+      "ap_b": "AP-3",
+      "channel": 36,
+      "reason": "Adjacent ward coverage overlap"
+    },
+    {
+      "ap_a": "AP-7",
+      "ap_b": "AP-8",
+      "channel": 153,
+      "reason": "Adjacent theatres -- same channel assignment"
+    }
+  ],
+  "obstacles": [
+    {
+      "id": "radiology_wall",
+      "x": [
+        60,
+        72
+      ],
+      "y": [
+        0,
+        20
+      ],
+      "loss_db": 25.0,
+      "description": "Lead-lined radiology room"
+    },
+    {
+      "id": "equip_store_wall",
+      "x": [
+        60,
+        72
+      ],
+      "y": [
+        17,
+        22
+      ],
+      "loss_db": 18.0,
+      "description": "Steel equipment store"
+    },
+    {
+      "id": "kitchen_wall",
+      "x": [
+        0,
+        15
+      ],
+      "y": [
+        0,
+        8
+      ],
+      "loss_db": 12.0,
+      "description": "Laundry and kitchen block"
+    }
+  ],
+  "path_loss_exponents": {
+    "corridor": 30,
+    "open_ward_or_room": 28,
+    "note": "Per ITU-R P.1238 for office/residential, adapted for clinical environment"
+  },
+  "failure_states_injected": [
+    "FAIL-001",
+    "FAIL-002",
+    "FAIL-003"
+  ],
+  "tables": {
+    "floor_map": {
+      "file_json": "floor_map.json",
+      "file_csv": "floor_map.csv",
+      "row_count": 4800,
+      "description": "Per-grid-cell RF coverage snapshot (80x60 = 4800 rows)",
+      "primary_key": [
+        "cell_x_m",
+        "cell_y_m"
+      ],
+      "columns": {
+        "cell_x_m": {
+          "type": "int",
+          "unit": "m",
+          "description": "Cell x-coordinate (0 to 79)"
+        },
+        "cell_y_m": {
+          "type": "int",
+          "unit": "m",
+          "description": "Cell y-coordinate (0 to 59)"
+        },
+        "zone_id": {
+          "type": "str",
+          "unit": null,
+          "description": "Hospital zone identifier"
+        },
+        "zone_type": {
+          "type": "str",
+          "unit": null,
+          "description": "ward | theatre | icu | corridor | lift | waiting | radiology | store | kitchen"
+        },
+        "best_ap_id": {
+          "type": "str",
+          "unit": null,
+          "description": "ID of AP with highest RSSI at this cell (best-server)"
+        },
+        "best_rssi_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI of best-server AP. Dead zone if <= -75 dBm"
+        },
+        "noise_floor_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "Simulated ambient thermal noise floor"
+        },
+        "snr_db": {
+          "type": "float",
+          "unit": "dB",
+          "description": "Signal-to-noise ratio (best_rssi - noise_floor)"
+        },
+        "is_dead_zone": {
+          "type": "bool",
+          "unit": null,
+          "description": "True when best_rssi_dbm <= rssi_dead_zone_threshold (-75 dBm)"
+        },
+        "rssi_AP-1_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI from AP-1 at this cell"
+        },
+        "rssi_AP-2_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI from AP-2 at this cell"
+        },
+        "rssi_AP-3_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI from AP-3 at this cell"
+        },
+        "rssi_AP-4_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI from AP-4 at this cell"
+        },
+        "rssi_AP-5_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI from AP-5 at this cell"
+        },
+        "rssi_AP-6_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI from AP-6 at this cell"
+        },
+        "rssi_AP-7_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI from AP-7 at this cell"
+        },
+        "rssi_AP-8_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI from AP-8 at this cell"
+        }
+      }
+    },
+    "ap_config": {
+      "file_json": "ap_config.json",
+      "file_csv": "ap_config.csv",
+      "row_count": 8,
+      "description": "Access point configuration records (8 rows)",
+      "primary_key": [
+        "id"
+      ],
+      "columns": {
+        "id": {
+          "type": "str",
+          "unit": null,
+          "description": "AP identifier (AP-1 to AP-8)"
+        },
+        "x": {
+          "type": "float",
+          "unit": "m",
+          "description": "AP ceiling-mount x-position"
+        },
+        "y": {
+          "type": "float",
+          "unit": "m",
+          "description": "AP ceiling-mount y-position"
+        },
+        "channel": {
+          "type": "int",
+          "unit": null,
+          "description": "Assigned 5 GHz channel"
+        },
+        "tx_power_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "Transmit power"
+        },
+        "band": {
+          "type": "str",
+          "unit": null,
+          "description": "Frequency band (5GHz)"
+        },
+        "bssid": {
+          "type": "str",
+          "unit": null,
+          "description": "AP MAC-format BSSID"
+        },
+        "zone": {
+          "type": "str",
+          "unit": null,
+          "description": "Zone where AP is ceiling-mounted"
+        }
+      }
+    },
+    "crowdsource_samples": {
+      "file_json": "crowdsource_samples.json",
+      "file_csv": "crowdsource_samples.csv",
+      "row_count": 1858,
+      "description": "Simulated device probe records (200 devices, variable readings per device)",
+      "primary_key": [
+        "sample_id"
+      ],
+      "columns": {
+        "sample_id": {
+          "type": "int",
+          "unit": null,
+          "description": "Unique probe record ID"
+        },
+        "device_id": {
+          "type": "str",
+          "unit": null,
+          "description": "Pseudonymised device identifier"
+        },
+        "device_type": {
+          "type": "str",
+          "unit": null,
+          "description": "clinical_device | staff_laptop | guest_phone | iot_sensor"
+        },
+        "timestamp_utc": {
+          "type": "str",
+          "unit": null,
+          "description": "ISO-8601 UTC measurement timestamp"
+        },
+        "hour_utc": {
+          "type": "int",
+          "unit": "h",
+          "description": "Hour of day (0 to 23)"
+        },
+        "x_m": {
+          "type": "float",
+          "unit": "m",
+          "description": "Device x-position on floor plan"
+        },
+        "y_m": {
+          "type": "float",
+          "unit": "m",
+          "description": "Device y-position on floor plan"
+        },
+        "zone_id": {
+          "type": "str",
+          "unit": null,
+          "description": "Zone containing device at time of reading"
+        },
+        "connected_ap_id": {
+          "type": "str",
+          "unit": null,
+          "description": "AP the device was associated with"
+        },
+        "channel": {
+          "type": "int",
+          "unit": null,
+          "description": "Channel of connected AP"
+        },
+        "rssi_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "Measured RSSI at device"
+        },
+        "noise_floor_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "Measured noise floor (elevated during microwave burst)"
+        },
+        "snr_db": {
+          "type": "float",
+          "unit": "dB",
+          "description": "SNR; reduced 15 dB during microwave burst in kitchen zone"
+        },
+        "ap5_offline": {
+          "type": "bool",
+          "unit": null,
+          "description": "True during AP-5 outage (14:00 to 16:00)"
+        },
+        "microwave_burst_active": {
+          "type": "bool",
+          "unit": null,
+          "description": "True during CH36 microwave interference (12:30 to 13:00)"
+        },
+        "is_lift_bank": {
+          "type": "bool",
+          "unit": null,
+          "description": "True if device is in lift bank zone"
+        },
+        "trusted": {
+          "type": "bool",
+          "unit": null,
+          "description": "False when zone has <3 samples/hour -- unreliable zone per SystemConfig"
+        }
+      }
+    },
+    "channel_utilisation": {
+      "file_json": "channel_utilisation.json",
+      "file_csv": "channel_utilisation.csv",
+      "row_count": 192,
+      "description": "Hourly channel utilisation per AP (8 APs x 24 hours = 192 rows)",
+      "primary_key": [
+        "ap_id",
+        "hour_utc"
+      ],
+      "columns": {
+        "ap_id": {
+          "type": "str",
+          "unit": null,
+          "description": "AP identifier"
+        },
+        "channel": {
+          "type": "int",
+          "unit": null,
+          "description": "Assigned 5 GHz channel"
+        },
+        "hour_utc": {
+          "type": "int",
+          "unit": "h",
+          "description": "Hour of day (0 to 23)"
+        },
+        "timestamp_utc": {
+          "type": "str",
+          "unit": null,
+          "description": "ISO-8601 UTC (start of hour)"
+        },
+        "utilisation_pct": {
+          "type": "float",
+          "unit": "%",
+          "description": "Channel busy fraction: 60-85% peak, 30-55% standard, 10-25% overnight, 0% during AP-5 outage"
+        },
+        "time_window": {
+          "type": "str",
+          "unit": null,
+          "description": "SystemConfig time-window label"
+        }
+      }
+    },
+    "failure_events": {
+      "file_json": "failure_events.json",
+      "row_count": 3,
+      "description": "Injected failure states and their parameters (3 rows)",
+      "primary_key": [
+        "event_id"
+      ],
+      "columns": {
+        "event_id": {
+          "type": "str",
+          "unit": null,
+          "description": "Failure event identifier"
+        },
+        "event_type": {
+          "type": "str",
+          "unit": null,
+          "description": "AP_OFFLINE | INTERFERENCE_BURST | SPARSE_COVERAGE"
+        },
+        "ap_id": {
+          "type": "str",
+          "unit": null,
+          "description": "Primary AP affected"
+        },
+        "channel": {
+          "type": "int",
+          "unit": null,
+          "description": "Channel involved"
+        },
+        "start_utc": {
+          "type": "str",
+          "unit": null,
+          "description": "Failure start (ISO-8601)"
+        },
+        "end_utc": {
+          "type": "str",
+          "unit": null,
+          "description": "Failure end (ISO-8601)"
+        },
+        "duration_min": {
+          "type": "int",
+          "unit": "min",
+          "description": "Duration in minutes"
+        },
+        "effect": {
+          "type": "str",
+          "unit": null,
+          "description": "Signal impact description"
+        },
+        "affected_zone": {
+          "type": "str",
+          "unit": null,
+          "description": "Primary hospital zone affected"
+        },
+        "rssi_impact_dbm": {
+          "type": "float",
+          "unit": "dBm",
+          "description": "RSSI drop caused by failure (null if not applicable)"
+        },
+        "snr_impact_db": {
+          "type": "float",
+          "unit": "dB",
+          "description": "SNR reduction caused by failure (null if not applicable)"
+        },
+        "samples_per_hour_max": {
+          "type": "int",
+          "unit": null,
+          "description": "Max samples per hour in affected zone (null if not applicable)"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "ingested_utc": "2026-09-08T06:36:47.652058+00:00",
+  "total_frames": 250,
+  "trusted_frames": 250,
+  "untrusted_frames": 0,
+  "device_breakdown": {
+    "clinical_device": 31,
+    "staff_laptop": 58,
+    "guest_phone": 64,
+    "iot_sensor": 97
+  },
+  "sample_frames": [
+    {
+      "telemetry_id": "TEL-000001",
+      "timestamp": "2026-09-08T06:36:47.550147+00:00",
+      "mac_address": "AC:DE:48:77:92:85",
+      "device_type": "guest_phone",
+      "connected_ap_id": "AP-1",
+      "channel": 36,
+      "rssi_dbm": -59.59,
+      "snr_db": 33.65,
+      "location_estimate": {
+        "x_m": 1,
+        "y_m": 51,
+        "zone_id": "ward_A"
+      },
+      "is_trusted": true
+    },
+    {
+      "telemetry_id": "TEL-000002",
+      "timestamp": "2026-09-08T06:36:47.550147+00:00",
+      "mac_address": "AC:DE:48:85:77:94",
+      "device_type": "guest_phone",
+      "connected_ap_id": "AP-4",
+      "channel": 44,
+      "rssi_dbm": -49.4,
+      "snr_db": 45.32,
+      "location_estimate": {
+        "x_m": 15,
+        "y_m": 8,
+        "zone_id": "ward_D"
+      },
+      "is_trusted": true
+    },
+    {
+      "telemetry_id": "TEL-000003",
+      "timestamp": "2026-09-08T06:36:47.551142+00:00",
+      "mac_address": "AC:DE:48:65:75:37",
+      "device_type": "staff_laptop",
+      "connected_ap_id": "AP-2",
+      "channel": 40,
+      "rssi_dbm": -49.17,
+      "snr_db": 45.47,
+      "location_estimate": {
+        "x_m": 26,
+        "y_m": 41,
+        "zone_id": "ward_B"
+      },
+      "is_trusted": true
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+[
+  {
+    "day_number": 1,
+    "date": "2026-08-09",
+    "sla_compliance_pct": 96.61,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 163,
+    "total_telemetry_samples": 2184,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 2,
+    "date": "2026-08-10",
+    "sla_compliance_pct": 98.77,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 59,
+    "total_telemetry_samples": 1893,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 3,
+    "date": "2026-08-11",
+    "sla_compliance_pct": 97.37,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 126,
+    "total_telemetry_samples": 2153,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 4,
+    "date": "2026-08-12",
+    "sla_compliance_pct": 100.0,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 0,
+    "total_telemetry_samples": 1998,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 5,
+    "date": "2026-08-13",
+    "sla_compliance_pct": 95.43,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 219,
+    "total_telemetry_samples": 1870,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 6,
+    "date": "2026-08-14",
+    "sla_compliance_pct": 98.32,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 81,
+    "total_telemetry_samples": 2129,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 7,
+    "date": "2026-08-15",
+    "sla_compliance_pct": 98.46,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 74,
+    "total_telemetry_samples": 2009,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 8,
+    "date": "2026-08-16",
+    "sla_compliance_pct": 98.54,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 70,
+    "total_telemetry_samples": 1827,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 9,
+    "date": "2026-08-17",
+    "sla_compliance_pct": 99.03,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 47,
+    "total_telemetry_samples": 1866,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 10,
+    "date": "2026-08-18",
+    "sla_compliance_pct": 100.0,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 0,
+    "total_telemetry_samples": 2032,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 11,
+    "date": "2026-08-19",
+    "sla_compliance_pct": 96.9,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 149,
+    "total_telemetry_samples": 2134,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 12,
+    "date": "2026-08-20",
+    "sla_compliance_pct": 98.98,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 49,
+    "total_telemetry_samples": 2073,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 13,
+    "date": "2026-08-21",
+    "sla_compliance_pct": 96.72,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 157,
+    "total_telemetry_samples": 1982,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 14,
+    "date": "2026-08-22",
+    "sla_compliance_pct": 100.0,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 0,
+    "total_telemetry_samples": 1819,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 15,
+    "date": "2026-08-23",
+    "sla_compliance_pct": 91.2,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": false,
+    "estimated_dead_zone_cells": 422,
+    "total_telemetry_samples": 2174,
+    "operational_status": "AP-5 Offline in Ward E (14:00-16:00 UTC)"
+  },
+  {
+    "day_number": 16,
+    "date": "2026-08-24",
+    "sla_compliance_pct": 97.52,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 119,
+    "total_telemetry_samples": 2003,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 17,
+    "date": "2026-08-25",
+    "sla_compliance_pct": 97.98,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 97,
+    "total_telemetry_samples": 1960,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 18,
+    "date": "2026-08-26",
+    "sla_compliance_pct": 97.9,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 101,
+    "total_telemetry_samples": 2006,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 19,
+    "date": "2026-08-27",
+    "sla_compliance_pct": 99.88,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 6,
+    "total_telemetry_samples": 1853,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 20,
+    "date": "2026-08-28",
+    "sla_compliance_pct": 98.53,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 71,
+    "total_telemetry_samples": 1852,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 21,
+    "date": "2026-08-29",
+    "sla_compliance_pct": 96.25,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 180,
+    "total_telemetry_samples": 1998,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 22,
+    "date": "2026-08-30",
+    "sla_compliance_pct": 93.5,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": false,
+    "estimated_dead_zone_cells": 312,
+    "total_telemetry_samples": 2069,
+    "operational_status": "Microwave CH36 Co-channel interference burst"
+  },
+  {
+    "day_number": 23,
+    "date": "2026-08-31",
+    "sla_compliance_pct": 99.08,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 44,
+    "total_telemetry_samples": 1984,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 24,
+    "date": "2026-09-01",
+    "sla_compliance_pct": 98.78,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 59,
+    "total_telemetry_samples": 2086,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 25,
+    "date": "2026-09-02",
+    "sla_compliance_pct": 98.68,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 63,
+    "total_telemetry_samples": 2083,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 26,
+    "date": "2026-09-03",
+    "sla_compliance_pct": 99.74,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 12,
+    "total_telemetry_samples": 1949,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 27,
+    "date": "2026-09-04",
+    "sla_compliance_pct": 96.26,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 180,
+    "total_telemetry_samples": 2052,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 28,
+    "date": "2026-09-05",
+    "sla_compliance_pct": 97.72,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 109,
+    "total_telemetry_samples": 2136,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 29,
+    "date": "2026-09-06",
+    "sla_compliance_pct": 98.32,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 81,
+    "total_telemetry_samples": 1803,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 30,
+    "date": "2026-09-07",
+    "sla_compliance_pct": 97.86,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 103,
+    "total_telemetry_samples": 1965,
+    "operational_status": "Normal Clinical Operations"
+  },
+  {
+    "day_number": 31,
+    "date": "2026-09-08",
+    "sla_compliance_pct": 98.96,
+    "sla_target_pct": 95.0,
+    "meets_accreditation_sla": true,
+    "estimated_dead_zone_cells": 50,
+    "total_telemetry_samples": 1841,
+    "operational_status": "Normal Clinical Operations"
+  }
+]

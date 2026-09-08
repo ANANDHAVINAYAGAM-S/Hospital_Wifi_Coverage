@@ -1,0 +1,26 @@
+======================================================================
+CWMOS PHASE 7 -- 3D MULTI-FLOOR PROPAGATION & COVERAGE REPORT
+======================================================================
+Building Model: 3 Floors (80m x 60m per floor, 4m floor-to-floor)
+Floor Slab Attenuation: LF = 15 dB (1 slab), LF = 24 dB (2 slabs)
+
+OVERALL BUILDING COVERAGE:
+  Total 3D Cells Sampled  : 3600
+  Overall SLA Compliance : 90.89% (328 dead cells)
+
+FLOOR BREAKDOWN:
+  Floor 1: 94.17% SLA (70 dead / 1200 cells)
+  Floor 2: 97.0% SLA (36 dead / 1200 cells)
+  Floor 3: 81.5% SLA (222 dead / 1200 cells)
+
+3D AP DEPLOYMENT PLAN:
+  - AP-1 (ward_A): Floor 1 at z=2.5m, Ch 36, 20.0 dBm
+  - AP-2 (ward_B): Floor 1 at z=2.5m, Ch 40, 20.0 dBm
+  - AP-3 (ward_C): Floor 1 at z=2.5m, Ch 36, 20.0 dBm
+  - AP-4 (ward_D): Floor 2 at z=6.5m, Ch 44, 20.0 dBm
+  - AP-5 (ward_E): Floor 2 at z=6.5m, Ch 48, 20.0 dBm
+  - AP-6 (ward_F): Floor 2 at z=6.5m, Ch 149, 20.0 dBm
+  - AP-7 (theatre_1): Floor 3 at z=10.5m, Ch 153, 20.0 dBm
+  - AP-8 (theatre_2): Floor 3 at z=10.5m, Ch 153, 20.0 dBm
+
+======================================================================

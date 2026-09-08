@@ -1,0 +1,1538 @@
+[
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 0,
+    "timestamp_utc": "2026-09-01T00:00:00Z",
+    "utilisation_pct": 17.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 1,
+    "timestamp_utc": "2026-09-01T01:00:00Z",
+    "utilisation_pct": 14.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 2,
+    "timestamp_utc": "2026-09-01T02:00:00Z",
+    "utilisation_pct": 20.2,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 3,
+    "timestamp_utc": "2026-09-01T03:00:00Z",
+    "utilisation_pct": 14.3,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 4,
+    "timestamp_utc": "2026-09-01T04:00:00Z",
+    "utilisation_pct": 20.8,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 5,
+    "timestamp_utc": "2026-09-01T05:00:00Z",
+    "utilisation_pct": 21.3,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 6,
+    "timestamp_utc": "2026-09-01T06:00:00Z",
+    "utilisation_pct": 34.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 7,
+    "timestamp_utc": "2026-09-01T07:00:00Z",
+    "utilisation_pct": 75.5,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 8,
+    "timestamp_utc": "2026-09-01T08:00:00Z",
+    "utilisation_pct": 66.7,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 9,
+    "timestamp_utc": "2026-09-01T09:00:00Z",
+    "utilisation_pct": 66.2,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 10,
+    "timestamp_utc": "2026-09-01T10:00:00Z",
+    "utilisation_pct": 39.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 11,
+    "timestamp_utc": "2026-09-01T11:00:00Z",
+    "utilisation_pct": 46.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 12,
+    "timestamp_utc": "2026-09-01T12:00:00Z",
+    "utilisation_pct": 51.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 13,
+    "timestamp_utc": "2026-09-01T13:00:00Z",
+    "utilisation_pct": 31.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 14,
+    "timestamp_utc": "2026-09-01T14:00:00Z",
+    "utilisation_pct": 46.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 15,
+    "timestamp_utc": "2026-09-01T15:00:00Z",
+    "utilisation_pct": 39.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 16,
+    "timestamp_utc": "2026-09-01T16:00:00Z",
+    "utilisation_pct": 33.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 17,
+    "timestamp_utc": "2026-09-01T17:00:00Z",
+    "utilisation_pct": 51.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 18,
+    "timestamp_utc": "2026-09-01T18:00:00Z",
+    "utilisation_pct": 41.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 19,
+    "timestamp_utc": "2026-09-01T19:00:00Z",
+    "utilisation_pct": 53.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 20,
+    "timestamp_utc": "2026-09-01T20:00:00Z",
+    "utilisation_pct": 53.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 21,
+    "timestamp_utc": "2026-09-01T21:00:00Z",
+    "utilisation_pct": 30.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 22,
+    "timestamp_utc": "2026-09-01T22:00:00Z",
+    "utilisation_pct": 12.6,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-1",
+    "channel": 36,
+    "hour_utc": 23,
+    "timestamp_utc": "2026-09-01T23:00:00Z",
+    "utilisation_pct": 22.3,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 0,
+    "timestamp_utc": "2026-09-01T00:00:00Z",
+    "utilisation_pct": 20.2,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 1,
+    "timestamp_utc": "2026-09-01T01:00:00Z",
+    "utilisation_pct": 15.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 2,
+    "timestamp_utc": "2026-09-01T02:00:00Z",
+    "utilisation_pct": 22.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 3,
+    "timestamp_utc": "2026-09-01T03:00:00Z",
+    "utilisation_pct": 20.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 4,
+    "timestamp_utc": "2026-09-01T04:00:00Z",
+    "utilisation_pct": 14.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 5,
+    "timestamp_utc": "2026-09-01T05:00:00Z",
+    "utilisation_pct": 19.4,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 6,
+    "timestamp_utc": "2026-09-01T06:00:00Z",
+    "utilisation_pct": 49.9,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 7,
+    "timestamp_utc": "2026-09-01T07:00:00Z",
+    "utilisation_pct": 78.6,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 8,
+    "timestamp_utc": "2026-09-01T08:00:00Z",
+    "utilisation_pct": 61.6,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 9,
+    "timestamp_utc": "2026-09-01T09:00:00Z",
+    "utilisation_pct": 78.8,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 10,
+    "timestamp_utc": "2026-09-01T10:00:00Z",
+    "utilisation_pct": 39.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 11,
+    "timestamp_utc": "2026-09-01T11:00:00Z",
+    "utilisation_pct": 48.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 12,
+    "timestamp_utc": "2026-09-01T12:00:00Z",
+    "utilisation_pct": 34.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 13,
+    "timestamp_utc": "2026-09-01T13:00:00Z",
+    "utilisation_pct": 37.6,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 14,
+    "timestamp_utc": "2026-09-01T14:00:00Z",
+    "utilisation_pct": 31.8,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 15,
+    "timestamp_utc": "2026-09-01T15:00:00Z",
+    "utilisation_pct": 40.6,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 16,
+    "timestamp_utc": "2026-09-01T16:00:00Z",
+    "utilisation_pct": 40.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 17,
+    "timestamp_utc": "2026-09-01T17:00:00Z",
+    "utilisation_pct": 40.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 18,
+    "timestamp_utc": "2026-09-01T18:00:00Z",
+    "utilisation_pct": 46.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 19,
+    "timestamp_utc": "2026-09-01T19:00:00Z",
+    "utilisation_pct": 30.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 20,
+    "timestamp_utc": "2026-09-01T20:00:00Z",
+    "utilisation_pct": 46.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 21,
+    "timestamp_utc": "2026-09-01T21:00:00Z",
+    "utilisation_pct": 44.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 22,
+    "timestamp_utc": "2026-09-01T22:00:00Z",
+    "utilisation_pct": 14.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-2",
+    "channel": 40,
+    "hour_utc": 23,
+    "timestamp_utc": "2026-09-01T23:00:00Z",
+    "utilisation_pct": 10.7,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 0,
+    "timestamp_utc": "2026-09-01T00:00:00Z",
+    "utilisation_pct": 14.7,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 1,
+    "timestamp_utc": "2026-09-01T01:00:00Z",
+    "utilisation_pct": 16.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 2,
+    "timestamp_utc": "2026-09-01T02:00:00Z",
+    "utilisation_pct": 17.3,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 3,
+    "timestamp_utc": "2026-09-01T03:00:00Z",
+    "utilisation_pct": 13.7,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 4,
+    "timestamp_utc": "2026-09-01T04:00:00Z",
+    "utilisation_pct": 16.4,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 5,
+    "timestamp_utc": "2026-09-01T05:00:00Z",
+    "utilisation_pct": 14.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 6,
+    "timestamp_utc": "2026-09-01T06:00:00Z",
+    "utilisation_pct": 51.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 7,
+    "timestamp_utc": "2026-09-01T07:00:00Z",
+    "utilisation_pct": 81.1,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 8,
+    "timestamp_utc": "2026-09-01T08:00:00Z",
+    "utilisation_pct": 68.1,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 9,
+    "timestamp_utc": "2026-09-01T09:00:00Z",
+    "utilisation_pct": 65.0,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 10,
+    "timestamp_utc": "2026-09-01T10:00:00Z",
+    "utilisation_pct": 47.9,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 11,
+    "timestamp_utc": "2026-09-01T11:00:00Z",
+    "utilisation_pct": 30.6,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 12,
+    "timestamp_utc": "2026-09-01T12:00:00Z",
+    "utilisation_pct": 38.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 13,
+    "timestamp_utc": "2026-09-01T13:00:00Z",
+    "utilisation_pct": 51.3,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 14,
+    "timestamp_utc": "2026-09-01T14:00:00Z",
+    "utilisation_pct": 48.3,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 15,
+    "timestamp_utc": "2026-09-01T15:00:00Z",
+    "utilisation_pct": 33.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 16,
+    "timestamp_utc": "2026-09-01T16:00:00Z",
+    "utilisation_pct": 40.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 17,
+    "timestamp_utc": "2026-09-01T17:00:00Z",
+    "utilisation_pct": 31.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 18,
+    "timestamp_utc": "2026-09-01T18:00:00Z",
+    "utilisation_pct": 54.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 19,
+    "timestamp_utc": "2026-09-01T19:00:00Z",
+    "utilisation_pct": 37.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 20,
+    "timestamp_utc": "2026-09-01T20:00:00Z",
+    "utilisation_pct": 31.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 21,
+    "timestamp_utc": "2026-09-01T21:00:00Z",
+    "utilisation_pct": 46.6,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 22,
+    "timestamp_utc": "2026-09-01T22:00:00Z",
+    "utilisation_pct": 23.4,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-3",
+    "channel": 36,
+    "hour_utc": 23,
+    "timestamp_utc": "2026-09-01T23:00:00Z",
+    "utilisation_pct": 21.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 0,
+    "timestamp_utc": "2026-09-01T00:00:00Z",
+    "utilisation_pct": 22.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 1,
+    "timestamp_utc": "2026-09-01T01:00:00Z",
+    "utilisation_pct": 17.2,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 2,
+    "timestamp_utc": "2026-09-01T02:00:00Z",
+    "utilisation_pct": 15.2,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 3,
+    "timestamp_utc": "2026-09-01T03:00:00Z",
+    "utilisation_pct": 23.3,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 4,
+    "timestamp_utc": "2026-09-01T04:00:00Z",
+    "utilisation_pct": 20.7,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 5,
+    "timestamp_utc": "2026-09-01T05:00:00Z",
+    "utilisation_pct": 12.9,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 6,
+    "timestamp_utc": "2026-09-01T06:00:00Z",
+    "utilisation_pct": 33.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 7,
+    "timestamp_utc": "2026-09-01T07:00:00Z",
+    "utilisation_pct": 75.2,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 8,
+    "timestamp_utc": "2026-09-01T08:00:00Z",
+    "utilisation_pct": 68.4,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 9,
+    "timestamp_utc": "2026-09-01T09:00:00Z",
+    "utilisation_pct": 81.1,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 10,
+    "timestamp_utc": "2026-09-01T10:00:00Z",
+    "utilisation_pct": 40.3,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 11,
+    "timestamp_utc": "2026-09-01T11:00:00Z",
+    "utilisation_pct": 36.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 12,
+    "timestamp_utc": "2026-09-01T12:00:00Z",
+    "utilisation_pct": 52.8,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 13,
+    "timestamp_utc": "2026-09-01T13:00:00Z",
+    "utilisation_pct": 45.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 14,
+    "timestamp_utc": "2026-09-01T14:00:00Z",
+    "utilisation_pct": 52.3,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 15,
+    "timestamp_utc": "2026-09-01T15:00:00Z",
+    "utilisation_pct": 39.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 16,
+    "timestamp_utc": "2026-09-01T16:00:00Z",
+    "utilisation_pct": 48.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 17,
+    "timestamp_utc": "2026-09-01T17:00:00Z",
+    "utilisation_pct": 53.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 18,
+    "timestamp_utc": "2026-09-01T18:00:00Z",
+    "utilisation_pct": 48.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 19,
+    "timestamp_utc": "2026-09-01T19:00:00Z",
+    "utilisation_pct": 34.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 20,
+    "timestamp_utc": "2026-09-01T20:00:00Z",
+    "utilisation_pct": 54.8,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 21,
+    "timestamp_utc": "2026-09-01T21:00:00Z",
+    "utilisation_pct": 34.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 22,
+    "timestamp_utc": "2026-09-01T22:00:00Z",
+    "utilisation_pct": 22.9,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-4",
+    "channel": 44,
+    "hour_utc": 23,
+    "timestamp_utc": "2026-09-01T23:00:00Z",
+    "utilisation_pct": 16.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 0,
+    "timestamp_utc": "2026-09-01T00:00:00Z",
+    "utilisation_pct": 18.8,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 1,
+    "timestamp_utc": "2026-09-01T01:00:00Z",
+    "utilisation_pct": 14.2,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 2,
+    "timestamp_utc": "2026-09-01T02:00:00Z",
+    "utilisation_pct": 18.2,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 3,
+    "timestamp_utc": "2026-09-01T03:00:00Z",
+    "utilisation_pct": 10.9,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 4,
+    "timestamp_utc": "2026-09-01T04:00:00Z",
+    "utilisation_pct": 16.6,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 5,
+    "timestamp_utc": "2026-09-01T05:00:00Z",
+    "utilisation_pct": 19.4,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 6,
+    "timestamp_utc": "2026-09-01T06:00:00Z",
+    "utilisation_pct": 39.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 7,
+    "timestamp_utc": "2026-09-01T07:00:00Z",
+    "utilisation_pct": 67.0,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 8,
+    "timestamp_utc": "2026-09-01T08:00:00Z",
+    "utilisation_pct": 72.7,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 9,
+    "timestamp_utc": "2026-09-01T09:00:00Z",
+    "utilisation_pct": 75.7,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 10,
+    "timestamp_utc": "2026-09-01T10:00:00Z",
+    "utilisation_pct": 51.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 11,
+    "timestamp_utc": "2026-09-01T11:00:00Z",
+    "utilisation_pct": 30.9,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 12,
+    "timestamp_utc": "2026-09-01T12:00:00Z",
+    "utilisation_pct": 54.6,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 13,
+    "timestamp_utc": "2026-09-01T13:00:00Z",
+    "utilisation_pct": 48.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 14,
+    "timestamp_utc": "2026-09-01T14:00:00Z",
+    "utilisation_pct": 0.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 15,
+    "timestamp_utc": "2026-09-01T15:00:00Z",
+    "utilisation_pct": 0.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 16,
+    "timestamp_utc": "2026-09-01T16:00:00Z",
+    "utilisation_pct": 41.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 17,
+    "timestamp_utc": "2026-09-01T17:00:00Z",
+    "utilisation_pct": 32.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 18,
+    "timestamp_utc": "2026-09-01T18:00:00Z",
+    "utilisation_pct": 31.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 19,
+    "timestamp_utc": "2026-09-01T19:00:00Z",
+    "utilisation_pct": 31.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 20,
+    "timestamp_utc": "2026-09-01T20:00:00Z",
+    "utilisation_pct": 30.9,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 21,
+    "timestamp_utc": "2026-09-01T21:00:00Z",
+    "utilisation_pct": 33.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 22,
+    "timestamp_utc": "2026-09-01T22:00:00Z",
+    "utilisation_pct": 25.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-5",
+    "channel": 48,
+    "hour_utc": 23,
+    "timestamp_utc": "2026-09-01T23:00:00Z",
+    "utilisation_pct": 24.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 0,
+    "timestamp_utc": "2026-09-01T00:00:00Z",
+    "utilisation_pct": 17.9,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 1,
+    "timestamp_utc": "2026-09-01T01:00:00Z",
+    "utilisation_pct": 10.1,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 2,
+    "timestamp_utc": "2026-09-01T02:00:00Z",
+    "utilisation_pct": 15.9,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 3,
+    "timestamp_utc": "2026-09-01T03:00:00Z",
+    "utilisation_pct": 19.6,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 4,
+    "timestamp_utc": "2026-09-01T04:00:00Z",
+    "utilisation_pct": 24.1,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 5,
+    "timestamp_utc": "2026-09-01T05:00:00Z",
+    "utilisation_pct": 11.6,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 6,
+    "timestamp_utc": "2026-09-01T06:00:00Z",
+    "utilisation_pct": 48.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 7,
+    "timestamp_utc": "2026-09-01T07:00:00Z",
+    "utilisation_pct": 72.1,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 8,
+    "timestamp_utc": "2026-09-01T08:00:00Z",
+    "utilisation_pct": 77.9,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 9,
+    "timestamp_utc": "2026-09-01T09:00:00Z",
+    "utilisation_pct": 76.3,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 10,
+    "timestamp_utc": "2026-09-01T10:00:00Z",
+    "utilisation_pct": 30.6,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 11,
+    "timestamp_utc": "2026-09-01T11:00:00Z",
+    "utilisation_pct": 36.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 12,
+    "timestamp_utc": "2026-09-01T12:00:00Z",
+    "utilisation_pct": 31.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 13,
+    "timestamp_utc": "2026-09-01T13:00:00Z",
+    "utilisation_pct": 31.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 14,
+    "timestamp_utc": "2026-09-01T14:00:00Z",
+    "utilisation_pct": 54.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 15,
+    "timestamp_utc": "2026-09-01T15:00:00Z",
+    "utilisation_pct": 48.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 16,
+    "timestamp_utc": "2026-09-01T16:00:00Z",
+    "utilisation_pct": 41.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 17,
+    "timestamp_utc": "2026-09-01T17:00:00Z",
+    "utilisation_pct": 47.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 18,
+    "timestamp_utc": "2026-09-01T18:00:00Z",
+    "utilisation_pct": 47.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 19,
+    "timestamp_utc": "2026-09-01T19:00:00Z",
+    "utilisation_pct": 48.3,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 20,
+    "timestamp_utc": "2026-09-01T20:00:00Z",
+    "utilisation_pct": 50.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 21,
+    "timestamp_utc": "2026-09-01T21:00:00Z",
+    "utilisation_pct": 52.9,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 22,
+    "timestamp_utc": "2026-09-01T22:00:00Z",
+    "utilisation_pct": 12.6,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-6",
+    "channel": 149,
+    "hour_utc": 23,
+    "timestamp_utc": "2026-09-01T23:00:00Z",
+    "utilisation_pct": 10.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 0,
+    "timestamp_utc": "2026-09-01T00:00:00Z",
+    "utilisation_pct": 18.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 1,
+    "timestamp_utc": "2026-09-01T01:00:00Z",
+    "utilisation_pct": 13.1,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 2,
+    "timestamp_utc": "2026-09-01T02:00:00Z",
+    "utilisation_pct": 20.7,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 3,
+    "timestamp_utc": "2026-09-01T03:00:00Z",
+    "utilisation_pct": 16.2,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 4,
+    "timestamp_utc": "2026-09-01T04:00:00Z",
+    "utilisation_pct": 10.8,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 5,
+    "timestamp_utc": "2026-09-01T05:00:00Z",
+    "utilisation_pct": 14.0,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 6,
+    "timestamp_utc": "2026-09-01T06:00:00Z",
+    "utilisation_pct": 33.3,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 7,
+    "timestamp_utc": "2026-09-01T07:00:00Z",
+    "utilisation_pct": 61.5,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 8,
+    "timestamp_utc": "2026-09-01T08:00:00Z",
+    "utilisation_pct": 61.0,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 9,
+    "timestamp_utc": "2026-09-01T09:00:00Z",
+    "utilisation_pct": 81.2,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 10,
+    "timestamp_utc": "2026-09-01T10:00:00Z",
+    "utilisation_pct": 47.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 11,
+    "timestamp_utc": "2026-09-01T11:00:00Z",
+    "utilisation_pct": 35.2,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 12,
+    "timestamp_utc": "2026-09-01T12:00:00Z",
+    "utilisation_pct": 30.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 13,
+    "timestamp_utc": "2026-09-01T13:00:00Z",
+    "utilisation_pct": 38.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 14,
+    "timestamp_utc": "2026-09-01T14:00:00Z",
+    "utilisation_pct": 49.6,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 15,
+    "timestamp_utc": "2026-09-01T15:00:00Z",
+    "utilisation_pct": 35.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 16,
+    "timestamp_utc": "2026-09-01T16:00:00Z",
+    "utilisation_pct": 39.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 17,
+    "timestamp_utc": "2026-09-01T17:00:00Z",
+    "utilisation_pct": 43.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 18,
+    "timestamp_utc": "2026-09-01T18:00:00Z",
+    "utilisation_pct": 41.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 19,
+    "timestamp_utc": "2026-09-01T19:00:00Z",
+    "utilisation_pct": 37.9,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 20,
+    "timestamp_utc": "2026-09-01T20:00:00Z",
+    "utilisation_pct": 39.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 21,
+    "timestamp_utc": "2026-09-01T21:00:00Z",
+    "utilisation_pct": 30.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 22,
+    "timestamp_utc": "2026-09-01T22:00:00Z",
+    "utilisation_pct": 16.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-7",
+    "channel": 153,
+    "hour_utc": 23,
+    "timestamp_utc": "2026-09-01T23:00:00Z",
+    "utilisation_pct": 24.5,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 0,
+    "timestamp_utc": "2026-09-01T00:00:00Z",
+    "utilisation_pct": 15.4,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 1,
+    "timestamp_utc": "2026-09-01T01:00:00Z",
+    "utilisation_pct": 11.7,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 2,
+    "timestamp_utc": "2026-09-01T02:00:00Z",
+    "utilisation_pct": 11.7,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 3,
+    "timestamp_utc": "2026-09-01T03:00:00Z",
+    "utilisation_pct": 17.8,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 4,
+    "timestamp_utc": "2026-09-01T04:00:00Z",
+    "utilisation_pct": 15.2,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 5,
+    "timestamp_utc": "2026-09-01T05:00:00Z",
+    "utilisation_pct": 11.1,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 6,
+    "timestamp_utc": "2026-09-01T06:00:00Z",
+    "utilisation_pct": 40.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 7,
+    "timestamp_utc": "2026-09-01T07:00:00Z",
+    "utilisation_pct": 74.2,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 8,
+    "timestamp_utc": "2026-09-01T08:00:00Z",
+    "utilisation_pct": 63.0,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 9,
+    "timestamp_utc": "2026-09-01T09:00:00Z",
+    "utilisation_pct": 78.0,
+    "time_window": "peak_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 10,
+    "timestamp_utc": "2026-09-01T10:00:00Z",
+    "utilisation_pct": 53.3,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 11,
+    "timestamp_utc": "2026-09-01T11:00:00Z",
+    "utilisation_pct": 41.9,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 12,
+    "timestamp_utc": "2026-09-01T12:00:00Z",
+    "utilisation_pct": 47.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 13,
+    "timestamp_utc": "2026-09-01T13:00:00Z",
+    "utilisation_pct": 31.6,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 14,
+    "timestamp_utc": "2026-09-01T14:00:00Z",
+    "utilisation_pct": 49.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 15,
+    "timestamp_utc": "2026-09-01T15:00:00Z",
+    "utilisation_pct": 43.5,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 16,
+    "timestamp_utc": "2026-09-01T16:00:00Z",
+    "utilisation_pct": 32.9,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 17,
+    "timestamp_utc": "2026-09-01T17:00:00Z",
+    "utilisation_pct": 54.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 18,
+    "timestamp_utc": "2026-09-01T18:00:00Z",
+    "utilisation_pct": 33.1,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 19,
+    "timestamp_utc": "2026-09-01T19:00:00Z",
+    "utilisation_pct": 32.0,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 20,
+    "timestamp_utc": "2026-09-01T20:00:00Z",
+    "utilisation_pct": 47.7,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 21,
+    "timestamp_utc": "2026-09-01T21:00:00Z",
+    "utilisation_pct": 34.4,
+    "time_window": "standard_clinical"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 22,
+    "timestamp_utc": "2026-09-01T22:00:00Z",
+    "utilisation_pct": 20.9,
+    "time_window": "low_load"
+  },
+  {
+    "ap_id": "AP-8",
+    "channel": 153,
+    "hour_utc": 23,
+    "timestamp_utc": "2026-09-01T23:00:00Z",
+    "utilisation_pct": 22.7,
+    "time_window": "low_load"
+  }
+]

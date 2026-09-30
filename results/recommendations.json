@@ -1,0 +1,150 @@
+{
+  "report": {
+    "baseline": 299,
+    "target": 5,
+    "measured_result": 94,
+    "absolute_reduction": 205,
+    "percentage_reduction": 68.6,
+    "error": 89,
+    "error_analysis": "Variance between predicted target (5 cells) and measured result (94 cells) is 89 cells. This discrepancy is primarily driven by Gaussian shadowing noise in crowdsource measurements and non-uniform spatial sampling across perimeter corridors. Additionally, discretized wall loss attenuation estimates at boundary thresholds introduce minor edge-cell classification variance."
+  },
+  "recommendations": [
+    {
+      "recommendation_id": "REC-001",
+      "type": "CHANNEL_CHANGE",
+      "priority": "HIGH",
+      "target": "AP-7",
+      "suggested_channel": 44,
+      "original_channel": 153,
+      "plain_description": "Change channel for AP-7 in theatre_1 from channel 153 to channel 44 to eliminate co-channel interference with adjacent access point AP-8.",
+      "technical_description": "Co-channel interference detected between AP-7 and AP-8 (Distance: 20.0m <= 20.0m, Channel: 153, Utilisation: 24.5%/22.7%). Reassigning AP-7 to non-overlapping Channel 44 (Neighbour avoidance radius: 40.0m).",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.95
+    },
+    {
+      "recommendation_id": "REC-002",
+      "type": "AP_REPOSITION",
+      "priority": "HIGH",
+      "target": "Zone ICU (66.8m, 9.2m)",
+      "target_ap_id": "AP-1",
+      "suggested_coordinates": [
+        66.8,
+        9.2
+      ],
+      "plain_description": "Reposition nearest access point to location (66.8m, 9.2m) in Icu to eliminate a cluster of 294 coverage dead spots.",
+      "technical_description": "Contiguous dead zone cluster identified (294 cells > 4, Centroid: [66.8, 9.2], Nearest AP Distance: 17.0m > 15.0m). Recommended relocation target: (66.8m, 9.2m).",
+      "estimated_dead_zone_reduction": 294,
+      "confidence": 0.88
+    },
+    {
+      "recommendation_id": "REC-003",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "ward_D",
+      "plain_description": "Perform a technician survey in Ward D because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'ward_D' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-004",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "ward_E",
+      "plain_description": "Perform a technician survey in Ward E because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'ward_E' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-005",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "ward_F",
+      "plain_description": "Perform a technician survey in Ward F because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'ward_F' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-006",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "icu",
+      "plain_description": "Perform a technician survey in Icu because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'icu' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-007",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "theatre_2",
+      "plain_description": "Perform a technician survey in Theatre 2 because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'theatre_2' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-008",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "corridor_v",
+      "plain_description": "Perform a technician survey in Corridor V because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'corridor_v' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-009",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "corridor_h",
+      "plain_description": "Perform a technician survey in Corridor H because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'corridor_h' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-010",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "ward_A",
+      "plain_description": "Perform a technician survey in Ward A because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'ward_A' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-011",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "ward_B",
+      "plain_description": "Perform a technician survey in Ward B because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'ward_B' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-012",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "ward_C",
+      "plain_description": "Perform a technician survey in Ward C because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'ward_C' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    },
+    {
+      "recommendation_id": "REC-013",
+      "type": "COVERAGE_GAP_FLAG",
+      "priority": "MEDIUM",
+      "target": "theatre_1",
+      "plain_description": "Perform a technician survey in Theatre 1 because current crowdsourced measurement count (0) is below trust threshold (5).",
+      "technical_description": "Zone 'theatre_1' sample density low (0 samples < 5 required). Confidence metrics default to physics prior. Walkthrough audit recommended.",
+      "estimated_dead_zone_reduction": 0,
+      "confidence": 0.6
+    }
+  ]
+}

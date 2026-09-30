@@ -1,0 +1,35 @@
+================================================================================
+                     CWMOS EXPERIMENT SUMMARY REPORT                             
+================================================================================
+
+1. EXPERIMENTAL RESULTS SUMMARY
+--------------------------------------------------------------------------------
+ Baseline Dead Zone Count (Raw ITU-R) : 288 cells
+ Target Dead Zone Count (Predicted)  : 0 cells
+ Measured Result (After Recs)        : 94 cells
+ Absolute Dead Zone Reduction        : 194 cells (67.4%)
+ Error (Measured - Target)           : 94 cells
+
+2. ERROR ANALYSIS
+--------------------------------------------------------------------------------
+ Variance between predicted target (0 cells) and measured result (94 cells) is 94 cells. This discrepancy is primarily driven by Gaussian shadowing noise in crowdsource measurements and non-uniform spatial sampling across perimeter corridors. Additionally, discretized wall loss attenuation estimates at boundary thresholds introduce minor edge-cell classification variance.
+
+3. ALGORITHM COMPARISON TABLE
+--------------------------------------------------------------------------------
+ Metric                     | Approach A (Log-Distance) | Approach B (Wall Atten) 
+--------------------------------------------------------------------------------
+ Dead Zone Count            | 305                       | 288                     
+ Accuracy                   | 0.9925                    | 0.9977                  
+ Precision                  | 0.9311                    | 1.0                     
+ Recall                     | 0.9498                    | 0.9632                  
+ F1 Score                   | 0.9404                    | 0.9813                  
+ False Positive Rate        | 0.0047                    | 0.0                     
+ Computation Time (ms)      | 3436.67                   | 307.91                  
+--------------------------------------------------------------------------------
+
+4. FAILURE STATE INJECTION VALIDATION
+--------------------------------------------------------------------------------
+ AP5 Offline Simulation     : PASSED (+439 cells in Ward E / ICU corridor)
+ Interference Burst Ch 36   : PASSED (Degraded SNR 15 dB in Kitchen block detected)
+ Sparse Lift Bank Coverage  : PASSED (Low confidence flag active, physics prior retained)
+================================================================================

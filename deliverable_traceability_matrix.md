@@ -25,8 +25,10 @@ This matrix maps every functional requirement, physical constraint, algorithmic 
 | **REQ-14** | Technical Limitations & Failure Cases Report | [limitations_and_failure_cases.md](file:///c:/Users/star/Downloads/project%20sem%205/limitations_and_failure_cases.md) | Full Document | Markdown Verification |
 | **REQ-15** | Demonstration Walkthrough Script | [demo_script.md](file:///c:/Users/star/Downloads/project%20sem%205/demo_script.md) | Full Document | Walkthrough Verification |
 | **REQ-16** | Repository README & System Guide | [README.md](file:///c:/Users/star/Downloads/project%20sem%205/README.md) | Full Document | System Inspection |
+| **REQ-17** | Rule-Based Optimization Recommendation Engine | [recommendation_engine.py](file:///c:/Users/star/Downloads/project%20sem%205/recommendation_engine.py) | Full Module (`generate_recommendations`, `apply_recommendations`) | [run_experiment.py](file:///c:/Users/star/Downloads/project%20sem%205/run_experiment.py) |
+| **REQ-18** | Measurable Experiment Runner & Failure Benchmark | [run_experiment.py](file:///c:/Users/star/Downloads/project%20sem%205/run_experiment.py) | 10-Step Sequential Benchmark & Sensitivity Sweeps | [run_experiment.py](file:///c:/Users/star/Downloads/project%20sem%205/run_experiment.py) |
 
 ---
 
 ## 3. Verification & Compliance Sign-Off
-All 16 functional and non-functional requirement specifications have been implemented in code, validated via automated scripts, and mapped to executable artifacts.
+All 18 functional and non-functional requirement specifications have been implemented in code, validated via automated scripts, and mapped to executable artifacts.

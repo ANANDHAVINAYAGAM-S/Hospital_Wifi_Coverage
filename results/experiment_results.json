@@ -1,0 +1,105 @@
+{
+  "step1_baseline_dead_zones": 288,
+  "step2_algo_a_log_distance": {
+    "dead_zone_count": 305,
+    "false_positive_rate": 0.0047,
+    "accuracy": 0.9925,
+    "precision": 0.9311,
+    "recall": 0.9498,
+    "f1": 0.9404,
+    "computation_time_ms": 3436.67
+  },
+  "step3_algo_b_wall_attenuation": {
+    "dead_zone_count": 288,
+    "false_positive_rate": 0.0,
+    "accuracy": 0.9977,
+    "precision": 1.0,
+    "recall": 0.9632,
+    "f1": 0.9813,
+    "computation_time_ms": 307.91
+  },
+  "step4_recommendations": {
+    "counts_by_type": {
+      "CHANNEL_CHANGE": 1,
+      "AP_REPOSITION": 1
+    },
+    "total_estimated_reduction": 288,
+    "recommendation_list": [
+      {
+        "recommendation_id": "REC-001",
+        "type": "CHANNEL_CHANGE",
+        "priority": "HIGH",
+        "target": "AP-7",
+        "suggested_channel": 44,
+        "original_channel": 153,
+        "plain_description": "Change channel for AP-7 in theatre_1 from channel 153 to channel 44 to eliminate co-channel interference with adjacent access point AP-8.",
+        "technical_description": "Co-channel interference detected between AP-7 and AP-8 (Distance: 20.0m <= 20.0m, Channel: 153, Utilisation: 24.5%/22.7%). Reassigning AP-7 to non-overlapping Channel 44 (Neighbour avoidance radius: 40.0m).",
+        "estimated_dead_zone_reduction": 0,
+        "confidence": 0.95
+      },
+      {
+        "recommendation_id": "REC-002",
+        "type": "AP_REPOSITION",
+        "priority": "HIGH",
+        "target": "Zone ICU (66.7m, 9.1m)",
+        "target_ap_id": "AP-1",
+        "suggested_coordinates": [
+          66.7,
+          9.1
+        ],
+        "plain_description": "Reposition nearest access point to location (66.7m, 9.1m) in Icu to eliminate a cluster of 288 coverage dead spots.",
+        "technical_description": "Contiguous dead zone cluster identified (288 cells > 4, Centroid: [66.7, 9.1], Nearest AP Distance: 17.0m > 15.0m). Recommended relocation target: (66.7m, 9.1m).",
+        "estimated_dead_zone_reduction": 288,
+        "confidence": 0.88
+      }
+    ]
+  },
+  "step5_measured_result": {
+    "measured_dead_zones_after": 94,
+    "recommendation_report": {
+      "baseline": 288,
+      "target": 0,
+      "measured_result": 94,
+      "absolute_reduction": 194,
+      "percentage_reduction": 67.4,
+      "error": 94,
+      "error_analysis": "Variance between predicted target (0 cells) and measured result (94 cells) is 94 cells. This discrepancy is primarily driven by Gaussian shadowing noise in crowdsource measurements and non-uniform spatial sampling across perimeter corridors. Additionally, discretized wall loss attenuation estimates at boundary thresholds introduce minor edge-cell classification variance."
+    }
+  },
+  "sensitivity_analysis": [
+    {
+      "config_variation": "RSSI Threshold -70 dBm",
+      "dead_zone_count": 382,
+      "false_positive_rate": 0.0184,
+      "computation_time_ms": 316.8
+    },
+    {
+      "config_variation": "RSSI Threshold -80 dBm",
+      "dead_zone_count": 279,
+      "false_positive_rate": 0.0,
+      "computation_time_ms": 304.89
+    },
+    {
+      "config_variation": "Min Samples = 3",
+      "dead_zone_count": 288,
+      "false_positive_rate": 0.0,
+      "promoted_zones_count": 14,
+      "computation_time_ms": 297.22
+    }
+  ],
+  "failure_state_tests": {
+    "ap5_offline": {
+      "pass": true,
+      "dz_increase_in_ward_e": 439
+    },
+    "interference_burst_ch36": {
+      "pass": true,
+      "algo_a_detected": true,
+      "algo_b_detected": true
+    },
+    "sparse_coverage_lift_bank": {
+      "pass": true,
+      "algo_b_low_confidence_flagged": true
+    }
+  }
+}

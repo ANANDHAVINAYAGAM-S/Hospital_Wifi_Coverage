@@ -17,6 +17,8 @@ project sem 5/
 ├── telemetry_ingestion_pipeline.py      # Phase 6 Real-Time Telemetry Ingestion Pipeline
 ├── multifloor_3d_propagation.py         # Phase 7 3D Multi-Floor Radio Propagation Model
 ├── audit_exporter.py                    # Phase 8 30-Day Historical Analytics & SLA Exporter
+├── recommendation_engine.py             # Phase 2 Optimization Recommendation Engine
+├── run_experiment.py                    # Phase 2 Measurable Experiment Runner (10-Step Benchmark)
 ├── limitations_and_failure_cases.md     # Technical Report on RF Edge Cases & Safeguards
 ├── demo_script.md                       # Demonstration Walkthrough Guide
 ├── deliverable_traceability_matrix.md   # Requirement-to-Code Traceability Table
@@ -41,7 +43,10 @@ project sem 5/
     ├── multifloor_summary_report.txt
     ├── historical_30day_sla_telemetry.csv / .json
     ├── hospital_accreditation_sla_audit.json
-    └── hospital_accreditation_sla_audit.txt
+    ├── hospital_accreditation_sla_audit.txt
+    ├── recommendations.json
+    ├── experiment_results.json
+    └── experiment_summary.txt
 ```
 
 ---
@@ -78,6 +83,9 @@ python multifloor_3d_propagation.py
 
 # Step 6: Generate 30-Day Hospital Accreditation SLA Audit Report
 python audit_exporter.py
+
+# Step 7: Run Optimization Recommendations & Measurable Experiment Benchmark
+python run_experiment.py
 ```
 
 ---

@@ -1,32 +1,32 @@
 day_number,date,sla_compliance_pct,sla_target_pct,meets_accreditation_sla,estimated_dead_zone_cells,total_telemetry_samples,operational_status
-1,2026-08-31,100.0,95.0,True,0,2022,Normal Clinical Operations
-2,2026-09-01,98.19,95.0,True,87,2168,Normal Clinical Operations
-3,2026-09-02,95.29,95.0,True,226,2099,Normal Clinical Operations
-4,2026-09-03,98.27,95.0,True,83,1913,Normal Clinical Operations
-5,2026-09-04,97.18,95.0,True,135,1939,Normal Clinical Operations
-6,2026-09-05,96.59,95.0,True,164,1998,Normal Clinical Operations
-7,2026-09-06,98.66,95.0,True,64,2080,Normal Clinical Operations
-8,2026-09-07,95.93,95.0,True,195,1968,Normal Clinical Operations
-9,2026-09-08,94.79,95.0,False,250,1919,Normal Clinical Operations
-10,2026-09-09,96.91,95.0,True,148,2116,Normal Clinical Operations
-11,2026-09-10,97.78,95.0,True,107,1842,Normal Clinical Operations
-12,2026-09-11,97.66,95.0,True,112,1801,Normal Clinical Operations
-13,2026-09-12,98.33,95.0,True,80,2155,Normal Clinical Operations
-14,2026-09-13,99.59,95.0,True,20,1850,Normal Clinical Operations
-15,2026-09-14,91.2,95.0,False,422,1871,AP-5 Offline in Ward E (14:00-16:00 UTC)
-16,2026-09-15,100.0,95.0,True,0,1962,Normal Clinical Operations
-17,2026-09-16,100.0,95.0,True,0,1839,Normal Clinical Operations
-18,2026-09-17,95.88,95.0,True,198,1833,Normal Clinical Operations
-19,2026-09-18,95.02,95.0,True,239,1928,Normal Clinical Operations
-20,2026-09-19,99.29,95.0,True,34,2099,Normal Clinical Operations
-21,2026-09-20,99.02,95.0,True,47,2007,Normal Clinical Operations
-22,2026-09-21,93.5,95.0,False,312,1931,Microwave CH36 Co-channel interference burst
-23,2026-09-22,99.62,95.0,True,18,1833,Normal Clinical Operations
-24,2026-09-23,97.79,95.0,True,106,2038,Normal Clinical Operations
-25,2026-09-24,100.0,95.0,True,0,1988,Normal Clinical Operations
-26,2026-09-25,98.05,95.0,True,94,1881,Normal Clinical Operations
-27,2026-09-26,99.32,95.0,True,33,1846,Normal Clinical Operations
-28,2026-09-27,97.74,95.0,True,108,2122,Normal Clinical Operations
-29,2026-09-28,95.89,95.0,True,197,2115,Normal Clinical Operations
-30,2026-09-29,96.16,95.0,True,184,1808,Normal Clinical Operations
-31,2026-09-30,98.33,95.0,True,80,1949,Normal Clinical Operations
+1,2026-09-01,95.95,95.0,True,194,1840,Normal Clinical Operations
+2,2026-09-02,98.23,95.0,True,85,1930,Normal Clinical Operations
+3,2026-09-03,97.85,95.0,True,103,1926,Normal Clinical Operations
+4,2026-09-04,95.79,95.0,True,202,1979,Normal Clinical Operations
+5,2026-09-05,98.05,95.0,True,94,1972,Normal Clinical Operations
+6,2026-09-06,98.87,95.0,True,54,2055,Normal Clinical Operations
+7,2026-09-07,97.44,95.0,True,123,2095,Normal Clinical Operations
+8,2026-09-08,99.65,95.0,True,17,1901,Normal Clinical Operations
+9,2026-09-09,97.78,95.0,True,107,1860,Normal Clinical Operations
+10,2026-09-10,99.69,95.0,True,15,2141,Normal Clinical Operations
+11,2026-09-11,97.0,95.0,True,144,2028,Normal Clinical Operations
+12,2026-09-12,97.7,95.0,True,110,2123,Normal Clinical Operations
+13,2026-09-13,97.36,95.0,True,127,1989,Normal Clinical Operations
+14,2026-09-14,97.11,95.0,True,139,2098,Normal Clinical Operations
+15,2026-09-15,91.2,95.0,False,422,2089,AP-5 Offline in Ward E (14:00-16:00 UTC)
+16,2026-09-16,96.02,95.0,True,191,1926,Normal Clinical Operations
+17,2026-09-17,95.72,95.0,True,205,1996,Normal Clinical Operations
+18,2026-09-18,98.83,95.0,True,56,2100,Normal Clinical Operations
+19,2026-09-19,97.32,95.0,True,129,1974,Normal Clinical Operations
+20,2026-09-20,100.0,95.0,True,0,1951,Normal Clinical Operations
+21,2026-09-21,96.31,95.0,True,177,2101,Normal Clinical Operations
+22,2026-09-22,93.5,95.0,False,312,2182,Microwave CH36 Co-channel interference burst
+23,2026-09-23,100.0,95.0,True,0,2117,Normal Clinical Operations
+24,2026-09-24,96.76,95.0,True,156,2023,Normal Clinical Operations
+25,2026-09-25,98.61,95.0,True,67,1810,Normal Clinical Operations
+26,2026-09-26,99.02,95.0,True,47,1915,Normal Clinical Operations
+27,2026-09-27,97.74,95.0,True,108,2092,Normal Clinical Operations
+28,2026-09-28,96.48,95.0,True,169,1810,Normal Clinical Operations
+29,2026-09-29,100.0,95.0,True,0,1974,Normal Clinical Operations
+30,2026-09-30,97.48,95.0,True,121,2077,Normal Clinical Operations
+31,2026-10-01,100.0,95.0,True,0,1808,Normal Clinical Operations

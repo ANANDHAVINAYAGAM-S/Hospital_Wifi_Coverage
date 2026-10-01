@@ -24,7 +24,7 @@
  Recall                     | 0.9498                    | 0.9632                  
  F1 Score                   | 0.9404                    | 0.9813                  
  False Positive Rate        | 0.0047                    | 0.0                     
- Computation Time (ms)      | 3436.67                   | 307.91                  
+ Computation Time (ms)      | 3438.46                   | 332.88                  
 --------------------------------------------------------------------------------
 
 4. FAILURE STATE INJECTION VALIDATION

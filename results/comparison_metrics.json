@@ -7,7 +7,7 @@
   "approach_A": {
     "name": "IDW Interpolation (Approach A)",
     "predicted_dead_zones": 305,
-    "map_update_time_ms": 3602.9,
+    "map_update_time_ms": 3477.0,
     "TP": 284,
     "FP": 21,
     "FN": 15,
@@ -21,7 +21,7 @@
   "approach_B": {
     "name": "Physics-Informed + Kalman Fusion (Approach B)",
     "predicted_dead_zones": 288,
-    "map_update_time_ms": 358.1,
+    "map_update_time_ms": 305.0,
     "TP": 288,
     "FP": 0,
     "FN": 11,
@@ -36,7 +36,7 @@
     "accuracy": 0.0052,
     "f1": 0.0409,
     "false_positive_rate": -0.0047,
-    "time_ms": -3244.8
+    "time_ms": -3172.0
   },
   "sparsity_analysis": [
     {
@@ -46,11 +46,11 @@
       "idw_accuracy": 0.9794,
       "idw_f1": 0.8136,
       "idw_fpr": 0.0036,
-      "idw_time_ms": 213.1,
+      "idw_time_ms": 200.6,
       "kalman_accuracy": 0.9977,
       "kalman_f1": 0.9813,
       "kalman_fpr": 0.0,
-      "kalman_time_ms": 4.6,
+      "kalman_time_ms": 3.5,
       "kalman_advantage_f1": 0.1677
     },
     {
@@ -60,7 +60,7 @@
       "idw_accuracy": 0.9865,
       "idw_f1": 0.8881,
       "idw_fpr": 0.0053,
-      "idw_time_ms": 399.8,
+      "idw_time_ms": 391.9,
       "kalman_accuracy": 0.9977,
       "kalman_f1": 0.9813,
       "kalman_fpr": 0.0,
@@ -74,11 +74,11 @@
       "idw_accuracy": 0.9875,
       "idw_f1": 0.9007,
       "idw_fpr": 0.0073,
-      "idw_time_ms": 802.7,
+      "idw_time_ms": 782.9,
       "kalman_accuracy": 0.9977,
       "kalman_f1": 0.9813,
       "kalman_fpr": 0.0,
-      "kalman_time_ms": 8.9,
+      "kalman_time_ms": 3.7,
       "kalman_advantage_f1": 0.0806
     },
     {
@@ -88,11 +88,11 @@
       "idw_accuracy": 0.9888,
       "idw_f1": 0.9112,
       "idw_fpr": 0.0071,
-      "idw_time_ms": 1455.5,
+      "idw_time_ms": 1326.7,
       "kalman_accuracy": 0.9977,
       "kalman_f1": 0.9813,
       "kalman_fpr": 0.0,
-      "kalman_time_ms": 4.0,
+      "kalman_time_ms": 4.1,
       "kalman_advantage_f1": 0.0701
     },
     {
@@ -102,7 +102,7 @@
       "idw_accuracy": 0.9904,
       "idw_f1": 0.9231,
       "idw_fpr": 0.0051,
-      "idw_time_ms": 1944.6,
+      "idw_time_ms": 1879.8,
       "kalman_accuracy": 0.9977,
       "kalman_f1": 0.9813,
       "kalman_fpr": 0.0,
@@ -116,11 +116,11 @@
       "idw_accuracy": 0.9919,
       "idw_f1": 0.9347,
       "idw_fpr": 0.0042,
-      "idw_time_ms": 3121.0,
+      "idw_time_ms": 2571.9,
       "kalman_accuracy": 0.9977,
       "kalman_f1": 0.9813,
       "kalman_fpr": 0.0,
-      "kalman_time_ms": 8.1,
+      "kalman_time_ms": 5.1,
       "kalman_advantage_f1": 0.0466
     },
     {
@@ -130,11 +130,11 @@
       "idw_accuracy": 0.9923,
       "idw_f1": 0.9388,
       "idw_fpr": 0.0049,
-      "idw_time_ms": 5225.4,
+      "idw_time_ms": 3283.0,
       "kalman_accuracy": 0.9977,
       "kalman_f1": 0.9813,
       "kalman_fpr": 0.0,
-      "kalman_time_ms": 12.0,
+      "kalman_time_ms": 5.8,
       "kalman_advantage_f1": 0.0425
     }
   ]

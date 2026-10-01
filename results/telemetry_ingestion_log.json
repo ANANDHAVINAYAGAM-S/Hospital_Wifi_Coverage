@@ -1,60 +1,60 @@
 {
-  "ingested_utc": "2026-09-30T08:41:21.867424+00:00",
+  "ingested_utc": "2026-10-01T06:53:46.652882+00:00",
   "total_frames": 250,
   "trusted_frames": 250,
   "untrusted_frames": 0,
   "device_breakdown": {
-    "clinical_device": 46,
-    "staff_laptop": 42,
-    "guest_phone": 59,
-    "iot_sensor": 103
+    "clinical_device": 28,
+    "staff_laptop": 47,
+    "guest_phone": 65,
+    "iot_sensor": 110
   },
   "sample_frames": [
     {
       "telemetry_id": "TEL-000001",
-      "timestamp": "2026-09-30T08:41:21.836345+00:00",
-      "mac_address": "AC:DE:48:16:70:45",
-      "device_type": "clinical_device",
+      "timestamp": "2026-10-01T06:53:46.652882+00:00",
+      "mac_address": "AC:DE:48:17:57:57",
+      "device_type": "iot_sensor",
       "connected_ap_id": "AP-4",
       "channel": 44,
-      "rssi_dbm": -59.56,
-      "snr_db": 38.26,
+      "rssi_dbm": -61.09,
+      "snr_db": 31.44,
       "location_estimate": {
-        "x_m": 13,
-        "y_m": 26,
-        "zone_id": "corridor_h"
+        "x_m": 1,
+        "y_m": 13,
+        "zone_id": "ward_D"
       },
       "is_trusted": true
     },
     {
       "telemetry_id": "TEL-000002",
-      "timestamp": "2026-09-30T08:41:21.853687+00:00",
-      "mac_address": "AC:DE:48:93:65:15",
+      "timestamp": "2026-10-01T06:53:46.652882+00:00",
+      "mac_address": "AC:DE:48:65:38:23",
       "device_type": "iot_sensor",
-      "connected_ap_id": "AP-6",
-      "channel": 149,
-      "rssi_dbm": -80.58,
-      "snr_db": 14.24,
+      "connected_ap_id": "AP-5",
+      "channel": 48,
+      "rssi_dbm": -47.42,
+      "snr_db": 47.62,
       "location_estimate": {
-        "x_m": 62,
-        "y_m": 11,
-        "zone_id": "icu"
+        "x_m": 15,
+        "y_m": 6,
+        "zone_id": "ward_D"
       },
       "is_trusted": true
     },
     {
       "telemetry_id": "TEL-000003",
-      "timestamp": "2026-09-30T08:41:21.853687+00:00",
-      "mac_address": "AC:DE:48:71:63:18",
-      "device_type": "iot_sensor",
+      "timestamp": "2026-10-01T06:53:46.652882+00:00",
+      "mac_address": "AC:DE:48:94:46:27",
+      "device_type": "guest_phone",
       "connected_ap_id": "AP-6",
       "channel": 149,
-      "rssi_dbm": -60.65,
-      "snr_db": 34.81,
+      "rssi_dbm": -56.2,
+      "snr_db": 40.72,
       "location_estimate": {
-        "x_m": 47,
-        "y_m": 26,
-        "zone_id": "corridor_h"
+        "x_m": 57,
+        "y_m": 21,
+        "zone_id": "ward_F"
       },
       "is_trusted": true
     }

@@ -15,7 +15,7 @@ Metric                              Approach A (IDW) Approach B (Kalman)
   F1 Score                                  0.9404             0.9813   (Δ +0.0409)
   False Positive Rate                       0.0047             0.0000   (Δ -0.0047)
   Predicted dead zones                         305                288
-  Map update time (ms)                      3602.9              358.1
+  Map update time (ms)                      3477.0              305.0
 ----------------------------------------------------------------------
 
 SPARSE SAMPLING — F1 Score at various sample fractions:
